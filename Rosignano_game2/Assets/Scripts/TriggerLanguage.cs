@@ -22,9 +22,9 @@ public class TriggerLanguage : MonoBehaviour
     public float average;
 
     //language
-    private bool isItalian;
+    private bool isItalian, time_elapsed;
     public GameObject text_ita, text_eng;
-    private float time_start, time_elapsed;
+    private float time_start;
 
     public TextMeshProUGUI text_trigger1_pos, text_trigger2_pos, text_trigger3_pos, text_trigger4_pos;
     public TextMeshProUGUI text_trigger1_neg, text_trigger2_neg, text_trigger3_neg, text_trigger4_neg;
@@ -41,6 +41,7 @@ public class TriggerLanguage : MonoBehaviour
             numberOfPoints[i] = 0;
         }
         sum = 0;
+        time_start = -99999f;
 
         isItalian = false;
         text_eng.SetActive(true);
@@ -72,35 +73,37 @@ public class TriggerLanguage : MonoBehaviour
         }
         numberOfPoints[0] = count;
 
-        if(average <= averageTarget + 50 && average >= averageTarget - 50){
-            if(!mIsTriggered){
-                time_start = Time.time;
-                if(isItalian){
-                    changeToEnglish();
-                    text_eng.SetActive(true);
-                    text_ita.SetActive(false);
-                    // Debug.Log("english");
-                }else{
-                    changeToItalian();
-                    text_eng.SetActive(false);
-                    text_ita.SetActive(true);
-                    // Debug.Log("italian");
+        if((Time.time - time_start) < 1f)
+            time_elapsed = false;
+        else time_elapsed = true;
+
+        if(time_elapsed){
+            if(average <= averageTarget + 50 && average >= averageTarget - 50){
+                if(!mIsTriggered){
+                    time_start = Time.time;
+                    if(isItalian){
+                        changeToEnglish();
+                        text_eng.SetActive(true);
+                        text_ita.SetActive(false);
+                        // Debug.Log("english");
+                    }else{
+                        changeToItalian();
+                        text_eng.SetActive(false);
+                        text_ita.SetActive(true);
+                        // Debug.Log("italian");
+                    }
                 }
-            }
 
-            if((Time.time - time_start) < 5f)
-                time_elapsed = false;
-            else time_elapsed = true;
-            
-            mIsTriggered = true;
-        }else{
-            if(mIsTriggered){
-                if(isItalian)
-                    isItalian = false;
-                else isItalian = true;
-            }
+                mIsTriggered = true;
+            }else{
+                if(mIsTriggered){
+                    if(isItalian)
+                        isItalian = false;
+                    else isItalian = true;
+                }
 
-            mIsTriggered = false;
+                mIsTriggered = false;
+            }
         }
     }
 
