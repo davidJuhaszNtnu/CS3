@@ -117,6 +117,10 @@ public class gameController : MonoBehaviour
         //idle
         fade_idle(0f,0f, 0f, true, true, true);
 
+        //3d models
+        trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+        fade3D(0f, trig1_negativeAction.transform.GetChild(1));
+
         time_idle = Time.time;
         t_idleCloud = 0f;
         t_idleTitle = 0f;
@@ -134,6 +138,20 @@ public class gameController : MonoBehaviour
             area.SetActive(false);
 
         mCamera = Camera.main;
+    }
+
+    private void fade3D(float t, Transform model){
+        foreach(Transform child in model){
+            if(child.GetComponent<Renderer>() != null)
+                foreach(Material material in child.GetComponent<Renderer>().materials){
+                    material.SetFloat("_Mode", 3);
+                    c = material.color;
+                    c.a = 0;
+                    c.r = 0;
+                    material.color = c;
+                    // material.SetColor("_Color", c);
+                }
+        }
     }
 
     private void fade(float t, GameObject action){

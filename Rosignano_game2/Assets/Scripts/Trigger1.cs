@@ -59,6 +59,17 @@ public class Trigger1 : MonoBehaviour
         c.a = t;
         action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
     }
+    
+    private void fade3D(float t, Transform model){
+        foreach(Transform child in model){
+            if(child.GetComponent<Renderer>() != null)
+                foreach(Material material in child.GetComponent<Renderer>().materials){
+                    c = material.color;
+                    c.a = t;
+                    material.color = c;
+                }
+        }
+    }
 
     void Update(){
         if(mIsTriggered){
@@ -68,11 +79,15 @@ public class Trigger1 : MonoBehaviour
                     t_pos += 0.01f;
                     fade(t_pos, gameController.trig1_positiveAction);
                 }
+
                 //fade out neg
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
+                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
+                //3d model
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out pos
                 if(t_pos > 0f){
@@ -87,7 +102,10 @@ public class Trigger1 : MonoBehaviour
                 if(t_neg < 1f){
                     t_neg += 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
+                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
+                //3d model
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
                 //fade out pos
                 if(t_pos > 0f){
                     t_pos -= 0.01f;
@@ -98,7 +116,10 @@ public class Trigger1 : MonoBehaviour
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
+                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
+                //3d model
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         if(t_pos <= 0f && t_neg <= 0f){
