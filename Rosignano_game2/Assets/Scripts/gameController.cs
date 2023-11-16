@@ -223,8 +223,7 @@ public class gameController : MonoBehaviour
         }else allIsOff = false;
         if(!trigger1.GetComponent<Trigger1>().isOff && !trigger2.GetComponent<Trigger2>().isOff && !trigger3.GetComponent<Trigger3>().isOff && !trigger4.GetComponent<Trigger4>().isOff){
             allIsOn = true;
-        }
-        
+        }else allIsOn = false;
         // Debug.Log(allIsOn);
 
         if(allIsOff){
