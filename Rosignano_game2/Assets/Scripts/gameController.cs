@@ -58,7 +58,7 @@ public class gameController : MonoBehaviour
     Color c;
 
     public GameObject trigger1, trigger2, trigger3, trigger4;
-    private bool allIsOff;
+    public bool allIsOff, allIsOn;
     private bool idleOn, time_idle_elapsed, startMeasuring_idle;
     private float time_idle;
     //title
@@ -77,6 +77,7 @@ public class gameController : MonoBehaviour
     public GameObject[] triggerAreaShow;
 
     //game assets
+    public GameObject video;
     
 
     void Start()
@@ -118,14 +119,16 @@ public class gameController : MonoBehaviour
         fade_idle(0f,0f, 0f, true, true, true);
 
         //3d models
-        trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
-        fade3D(0f, trig1_negativeAction.transform.GetChild(1));
+        trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
+        video.SetActive(false);
 
         time_idle = Time.time;
         t_idleCloud = 0f;
         t_idleTitle = 0f;
         t_idleText = 0f;
         allIsOff = false;
+        allIsOn = false;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -218,7 +221,11 @@ public class gameController : MonoBehaviour
         if(trigger1.GetComponent<Trigger1>().isOff && trigger2.GetComponent<Trigger2>().isOff && trigger3.GetComponent<Trigger3>().isOff && trigger4.GetComponent<Trigger4>().isOff){
             allIsOff = true;
         }else allIsOff = false;
-        // Debug.Log(allIsOff);
+        if(!trigger1.GetComponent<Trigger1>().isOff && !trigger2.GetComponent<Trigger2>().isOff && !trigger3.GetComponent<Trigger3>().isOff && !trigger4.GetComponent<Trigger4>().isOff){
+            allIsOn = true;
+        }
+        
+        // Debug.Log(allIsOn);
 
         if(allIsOff){
             if(!startMeasuring_idle){
@@ -304,6 +311,18 @@ public class gameController : MonoBehaviour
             if(t_idleText > 0f){
                 t_idleText -= 0.01f;
                 fade_idle(0f, 0f, t_idleText, false, false, true);
+            }
+        }
+
+        if(allIsOn){
+            if(!video.activeSelf){
+                video.SetActive(true);
+                video.transform.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+            }
+        }else{
+            if(video.activeSelf){
+                video.SetActive(false);
+                video.transform.GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
             }
         }
 

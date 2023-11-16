@@ -84,10 +84,10 @@ public class Trigger1 : MonoBehaviour
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
-                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
+                    // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out pos
                 if(t_pos > 0f){
@@ -102,10 +102,10 @@ public class Trigger1 : MonoBehaviour
                 if(t_neg < 1f){
                     t_neg += 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
-                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
+                    // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
                 //fade out pos
                 if(t_pos > 0f){
                     t_pos -= 0.01f;
@@ -116,10 +116,10 @@ public class Trigger1 : MonoBehaviour
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
                     fade(t_neg, gameController.trig1_negativeAction);
-                    fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
+                    // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         if(t_pos <= 0f && t_neg <= 0f){
