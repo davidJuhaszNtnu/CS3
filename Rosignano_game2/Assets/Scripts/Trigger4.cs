@@ -25,7 +25,7 @@ public class Trigger4 : MonoBehaviour
     private int sum;
     public float average;
 
-    public bool isOff;
+    public bool isOff, isOn;
 
     private void Awake(){
         gameController.OnTrigger4Points += OnTrigger4Points;
@@ -106,6 +106,10 @@ public class Trigger4 : MonoBehaviour
         }else if(isOff){
                 isOff = false;
         }
+
+        if(mIsTriggered)
+            isOn = true;
+        else isOn = false;
     }
 
     private void OnDestroy(){

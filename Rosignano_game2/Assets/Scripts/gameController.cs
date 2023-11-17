@@ -77,7 +77,12 @@ public class gameController : MonoBehaviour
     public GameObject[] triggerAreaShow;
 
     //game assets
-    public GameObject video;
+    public GameObject video_pos;
+    //happyEnd
+    private bool startMeasuring_happyEnd, time_happyEnd_elapsed;
+    private float time_happyEnd;
+    private bool happyEndOn;
+    private float t_videos_pos;
     
 
     void Start()
@@ -120,8 +125,11 @@ public class gameController : MonoBehaviour
 
         //3d models
         trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        // trigger1.transform.GetComponent<Trigger1>().scale_orig_neg = trig1_negativeAction.transform.GetChild(1).localScale.x;
+        // Debug.Log(trig1_negativeAction.transform.GetChild(1).localScale);
         // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
-        video.SetActive(false);
+        // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
+        fade_videos(0f, video_pos);
 
         time_idle = Time.time;
         t_idleCloud = 0f;
@@ -129,6 +137,8 @@ public class gameController : MonoBehaviour
         t_idleText = 0f;
         allIsOff = false;
         allIsOn = false;
+        happyEndOn = false;
+        t_videos_pos = 0f;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -143,18 +153,21 @@ public class gameController : MonoBehaviour
         mCamera = Camera.main;
     }
 
+    // private void fade3D(float t, Transform model){
+    //     foreach(Transform child in model){
+    //         if(child.GetComponent<Renderer>() != null)
+    //             foreach(Material material in child.GetComponent<Renderer>().materials){
+    //                 material.SetFloat("_Mode", 3);
+    //                 c = material.color;
+    //                 c.a = 0;
+    //                 c.r = 0;
+    //                 material.color = c;
+    //                 // material.SetColor("_Color", c);
+    //             }
+    //     }
+    // }
     private void fade3D(float t, Transform model){
-        foreach(Transform child in model){
-            if(child.GetComponent<Renderer>() != null)
-                foreach(Material material in child.GetComponent<Renderer>().materials){
-                    material.SetFloat("_Mode", 3);
-                    c = material.color;
-                    c.a = 0;
-                    c.r = 0;
-                    material.color = c;
-                    // material.SetColor("_Color", c);
-                }
-        }
+        model.localScale = Vector3.one * t;
     }
 
     private void fade(float t, GameObject action){
@@ -166,6 +179,17 @@ public class gameController : MonoBehaviour
         c = action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color;
         c.a = t;
         action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
+    }
+
+    private void fade_videos(float t, GameObject videos){
+        //land
+        c = videos.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<RawImage>().color;
+        c.a = t;
+        videos.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<RawImage>().color = c;
+        //sea
+        c = videos.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RawImage>().color;
+        c.a = t;
+        videos.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RawImage>().color = c;
     }
 
     private void fade_idle(float t_cloud, float t_title, float t_text, bool bool_cloud, bool bool_title, bool bool_text){
@@ -221,12 +245,12 @@ public class gameController : MonoBehaviour
         if(trigger1.GetComponent<Trigger1>().isOff && trigger2.GetComponent<Trigger2>().isOff && trigger3.GetComponent<Trigger3>().isOff && trigger4.GetComponent<Trigger4>().isOff){
             allIsOff = true;
         }else allIsOff = false;
-        if(!trigger1.GetComponent<Trigger1>().isOff && !trigger2.GetComponent<Trigger2>().isOff && !trigger3.GetComponent<Trigger3>().isOff && !trigger4.GetComponent<Trigger4>().isOff){
+        if(trigger1.GetComponent<Trigger1>().isOn && trigger2.GetComponent<Trigger2>().isOn && trigger3.GetComponent<Trigger3>().isOn && trigger4.GetComponent<Trigger4>().isOn){
             allIsOn = true;
         }else allIsOn = false;
         // Debug.Log(allIsOn);
 
-        if(allIsOff){
+        if(allIsOff && !happyEndOn){
             if(!startMeasuring_idle){
                 startMeasuring_idle = true;
                 time_idle = Time.time;
@@ -314,14 +338,45 @@ public class gameController : MonoBehaviour
         }
 
         if(allIsOn){
-            if(!video.activeSelf){
-                video.SetActive(true);
-                video.transform.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+            if(!startMeasuring_happyEnd){
+                startMeasuring_happyEnd = true;
+                time_happyEnd = Time.time;
+            }else if((Time.time - time_happyEnd) < 60){
+                happyEndOn = true;
+                time_happyEnd_elapsed = false;
+                video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+                video_pos.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+            }else{
+                time_happyEnd_elapsed = true;
+                happyEndOn = false;
+            }
+            if(!time_happyEnd_elapsed){
+                //fade in videos
+                if(t_videos_pos < 1f){
+                    t_videos_pos += 0.01f;
+                    fade_videos(t_videos_pos, video_pos);
+                }
+            }else{
+                //fade out videos
+                if(t_videos_pos > 0f){
+                    t_videos_pos -= 0.01f;
+                    fade_videos(t_videos_pos, video_pos);
+                }else{
+                    video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+                    video_pos.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+                }
             }
         }else{
-            if(video.activeSelf){
-                video.SetActive(false);
-                video.transform.GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+            startMeasuring_happyEnd = false;
+            time_happyEnd_elapsed = false;
+            happyEndOn = false;
+            //fade out videos
+            if(t_videos_pos > 0f){
+                t_videos_pos -= 0.01f;
+                fade_videos(t_videos_pos, video_pos);
+            }else{
+                video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
+                video_pos.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
             }
         }
 

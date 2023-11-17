@@ -21,13 +21,16 @@ public class Trigger1 : MonoBehaviour
     private float t_pos, t_neg;
     private float time_pos, time_neg;
 
+    //3d model
+    public float scale_orig_neg;
+
     //averaging
     public int n;
     private int[] numberOfPoints;
     private int sum;
     public float average;
 
-    public bool isOff;
+    public bool isOff, isOn;
 
     private void Awake(){
         gameController.OnTrigger1Points += OnTrigger1Points;
@@ -60,15 +63,18 @@ public class Trigger1 : MonoBehaviour
         action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
     }
     
+    // private void fade3D(float t, Transform model){
+    //     foreach(Transform child in model){
+    //         if(child.GetComponent<Renderer>() != null)
+    //             foreach(Material material in child.GetComponent<Renderer>().materials){
+    //                 c = material.color;
+    //                 c.a = t;
+    //                 material.color = c;
+    //             }
+    //     }
+    // }
     private void fade3D(float t, Transform model){
-        foreach(Transform child in model){
-            if(child.GetComponent<Renderer>() != null)
-                foreach(Material material in child.GetComponent<Renderer>().materials){
-                    c = material.color;
-                    c.a = t;
-                    material.color = c;
-                }
-        }
+        model.localScale = Vector3.one * t * scale_orig_neg;
     }
 
     void Update(){
@@ -82,7 +88,7 @@ public class Trigger1 : MonoBehaviour
 
                 //fade out neg
                 if(t_neg > 0f){
-                    t_neg -= 0.01f;
+                    t_neg -= 0.05f;
                     fade(t_neg, gameController.trig1_negativeAction);
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
@@ -100,7 +106,7 @@ public class Trigger1 : MonoBehaviour
             if(!time_elapsed_neg){
                 //fade in neg
                 if(t_neg < 1f){
-                    t_neg += 0.01f;
+                    t_neg += 0.05f;
                     fade(t_neg, gameController.trig1_negativeAction);
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
@@ -114,7 +120,7 @@ public class Trigger1 : MonoBehaviour
             }else{
                 //fade out neg
                 if(t_neg > 0f){
-                    t_neg -= 0.01f;
+                    t_neg -= 0.05f;
                     fade(t_neg, gameController.trig1_negativeAction);
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
@@ -129,6 +135,10 @@ public class Trigger1 : MonoBehaviour
         }else if(isOff){
                 isOff = false;
         }
+
+        if(mIsTriggered)
+            isOn = true;
+        else isOn = false;
     }
 
     private void OnDestroy(){
@@ -169,7 +179,7 @@ public class Trigger1 : MonoBehaviour
             if(mIsTriggered){
                 time_neg = Time.time;
             }
-            if((Time.time - time_neg) < 5f)
+            if((Time.time - time_neg) < 20f)
                 time_elapsed_neg = false;
             else time_elapsed_neg = true;
 
