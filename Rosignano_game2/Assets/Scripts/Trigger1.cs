@@ -9,8 +9,8 @@ public class Trigger1 : MonoBehaviour
     // [Range(0, 10)]
     // public int mSensitivity_pos, mSensitivity_neg;
     public int averageTarget;
-    private bool mIsTriggered, time_elapsed_pos;
-    private bool time_elapsed_neg;
+    public bool mIsTriggered;
+    private bool time_elapsed_pos, time_elapsed_neg;
 
     private Camera mCamera = null;
     private RectTransform mRectTransform = null;
@@ -30,7 +30,7 @@ public class Trigger1 : MonoBehaviour
     private int sum;
     public float average;
 
-    public bool isOff, isOn;
+    public bool isOff;
 
     private void Awake(){
         gameController.OnTrigger1Points += OnTrigger1Points;
@@ -135,10 +135,6 @@ public class Trigger1 : MonoBehaviour
         }else if(isOff){
                 isOff = false;
         }
-
-        if(mIsTriggered)
-            isOn = true;
-        else isOn = false;
     }
 
     private void OnDestroy(){

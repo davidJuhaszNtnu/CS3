@@ -892,7 +892,6 @@ MonoBehaviour:
   trigger3: {fileID: 1588964380}
   trigger4: {fileID: 1079368824}
   allIsOff: 0
-  allIsOn: 0
   idleAction: {fileID: 22747773}
   debugPanel: {fileID: 603206448}
   input_lake: {fileID: 878223158}
@@ -1774,11 +1773,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageTarget: 38
+  mIsTriggered: 0
   gameController: {fileID: 163867217}
   n: 15
   average: 0
   isOff: 0
-  isOn: 0
 --- !u!1 &396181702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1954,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419267300}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: c4efc85f548c6014495f2c1d9fe1c9c1, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ddfda3b0095cea5428c4d6d5f1e0a22a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4846,12 +4845,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageTarget: 42
+  mIsTriggered: 0
   gameController: {fileID: 163867217}
   scale_orig_neg: 0
   n: 15
   average: 0
   isOff: 0
-  isOn: 0
 --- !u!114 &874315581 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9212412457849201989, guid: 8f4d31ddb9b60154fb7abd3c23557301, type: 3}
@@ -6446,11 +6445,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageTarget: 45
+  mIsTriggered: 0
   gameController: {fileID: 163867217}
   n: 25
   average: 0
   isOff: 0
-  isOn: 0
 --- !u!1 &1087136178
 GameObject:
   m_ObjectHideFlags: 0
@@ -7896,11 +7895,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageTarget: 25
+  mIsTriggered: 0
   gameController: {fileID: 163867217}
   n: 15
   average: 0
   isOff: 0
-  isOn: 0
 --- !u!1 &1598660082
 GameObject:
   m_ObjectHideFlags: 0
@@ -9312,7 +9311,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115576972}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 63d4dce29dfb07540b0be188a7f802d0, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ddfda3b0095cea5428c4d6d5f1e0a22a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

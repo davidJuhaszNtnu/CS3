@@ -7,8 +7,8 @@ using TMPro;
 public class Trigger2 : MonoBehaviour
 {
     public int averageTarget;
-    private bool mIsTriggered, time_elapsed_pos;
-    private bool time_elapsed_neg;
+    public bool mIsTriggered;
+    private bool time_elapsed_pos, time_elapsed_neg;
 
     private Camera mCamera = null;
     private RectTransform mRectTransform = null;
@@ -25,7 +25,7 @@ public class Trigger2 : MonoBehaviour
     private int sum;
     public float average;
 
-    public bool isOff, isOn;
+    public bool isOff;
 
     private void Awake(){
         gameController.OnTrigger2Points += OnTrigger2Points;
@@ -107,10 +107,6 @@ public class Trigger2 : MonoBehaviour
         }else if(isOff){
                 isOff = false;
         }
-
-        if(mIsTriggered)
-            isOn = true;
-        else isOn = false;
     }
 
     private void OnDestroy(){

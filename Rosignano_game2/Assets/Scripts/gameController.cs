@@ -58,7 +58,7 @@ public class gameController : MonoBehaviour
     Color c;
 
     public GameObject trigger1, trigger2, trigger3, trigger4;
-    public bool allIsOff, allIsOn;
+    public bool allIsOff;
     private bool idleOn, time_idle_elapsed, startMeasuring_idle;
     private float time_idle;
     //title
@@ -76,6 +76,7 @@ public class gameController : MonoBehaviour
     public TMP_InputField input_lake, input_wwtp, input_house, input_island;
     public GameObject[] triggerAreaShow;
 
+    private bool allIsTriggered, allIsNotTriggered;
     //game assets
     public GameObject video_pos;
     //happyEnd
@@ -136,7 +137,7 @@ public class gameController : MonoBehaviour
         t_idleTitle = 0f;
         t_idleText = 0f;
         allIsOff = false;
-        allIsOn = false;
+        allIsTriggered = false;
         happyEndOn = false;
         t_videos_pos = 0f;
 
@@ -245,10 +246,13 @@ public class gameController : MonoBehaviour
         if(trigger1.GetComponent<Trigger1>().isOff && trigger2.GetComponent<Trigger2>().isOff && trigger3.GetComponent<Trigger3>().isOff && trigger4.GetComponent<Trigger4>().isOff){
             allIsOff = true;
         }else allIsOff = false;
-        if(trigger1.GetComponent<Trigger1>().isOn && trigger2.GetComponent<Trigger2>().isOn && trigger3.GetComponent<Trigger3>().isOn && trigger4.GetComponent<Trigger4>().isOn){
-            allIsOn = true;
-        }else allIsOn = false;
-        // Debug.Log(allIsOn);
+        if(trigger1.GetComponent<Trigger1>().mIsTriggered && trigger2.GetComponent<Trigger2>().mIsTriggered && trigger3.GetComponent<Trigger3>().mIsTriggered && trigger4.GetComponent<Trigger4>().mIsTriggered){
+            allIsTriggered = true;
+        }else allIsTriggered = false;
+        if(!trigger1.GetComponent<Trigger1>().mIsTriggered && !trigger2.GetComponent<Trigger2>().mIsTriggered && !trigger3.GetComponent<Trigger3>().mIsTriggered && !trigger4.GetComponent<Trigger4>().mIsTriggered){
+            allIsNotTriggered = true;
+        }else allIsNotTriggered = false;
+        // Debug.Log(allIsTriggered);
 
         if(allIsOff && !happyEndOn){
             if(!startMeasuring_idle){
@@ -337,7 +341,7 @@ public class gameController : MonoBehaviour
             }
         }
 
-        if(allIsOn){
+        if(allIsTriggered){
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
