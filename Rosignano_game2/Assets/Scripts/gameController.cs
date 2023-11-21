@@ -345,7 +345,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 60){
+            }else if((Time.time - time_happyEnd) < 60f){
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
                 video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
