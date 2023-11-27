@@ -78,12 +78,17 @@ public class gameController : MonoBehaviour
 
     private bool allIsTriggered, allIsNotTriggered;
     //game assets
-    public GameObject video_pos;
+    public GameObject video_pos, video_neg;
     //happyEnd
     private bool startMeasuring_happyEnd, time_happyEnd_elapsed;
     private float time_happyEnd;
     private bool happyEndOn;
     private float t_videos_pos;
+
+    private bool startMeasuring_sadEnd, time_sadEnd_elapsed;
+    private float time_sadEnd;
+    private bool sadEndOn;
+    private float t_videos_neg;
     
 
     void Start()
@@ -131,15 +136,20 @@ public class gameController : MonoBehaviour
         // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
         // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
         fade_videos(0f, video_pos);
+        fade_videos(0f, video_neg);
 
         time_idle = Time.time;
         t_idleCloud = 0f;
         t_idleTitle = 0f;
         t_idleText = 0f;
         allIsOff = false;
+
         allIsTriggered = false;
         happyEndOn = false;
         t_videos_pos = 0f;
+        allIsNotTriggered = false;
+        sadEndOn = false;
+        t_videos_neg = 0f;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -381,6 +391,49 @@ public class gameController : MonoBehaviour
             }else{
                 video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
                 video_pos.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
+            }
+        }
+
+        if(allIsNotTriggered){
+            if(!startMeasuring_sadEnd){
+                startMeasuring_sadEnd = true;
+                time_sadEnd = Time.time;
+            }else if((Time.time - time_sadEnd) < 60f){
+                sadEndOn = true;
+                time_sadEnd_elapsed = false;
+                video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+                video_neg.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+            }else{
+                time_sadEnd_elapsed = true;
+                sadEndOn = false;
+            }
+            if(!time_sadEnd_elapsed){
+                //fade in videos
+                if(t_videos_neg < 1f){
+                    t_videos_neg += 0.01f;
+                    fade_videos(t_videos_neg, video_neg);
+                }
+            }else{
+                //fade out videos
+                if(t_videos_neg > 0f){
+                    t_videos_neg -= 0.01f;
+                    fade_videos(t_videos_neg, video_neg);
+                }else{
+                    video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+                    video_neg.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+                }
+            }
+        }else{
+            startMeasuring_sadEnd = false;
+            time_sadEnd_elapsed = false;
+            sadEndOn = false;
+            //fade out videos
+            if(t_videos_neg > 0f){
+                t_videos_neg -= 0.01f;
+                fade_videos(t_videos_neg, video_neg);
+            }else{
+                video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
+                video_neg.transform.GetChild(1).GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
             }
         }
 
