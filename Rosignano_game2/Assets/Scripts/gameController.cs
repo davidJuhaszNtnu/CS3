@@ -76,7 +76,7 @@ public class gameController : MonoBehaviour
     public TMP_InputField input_lake, input_wwtp, input_house, input_island;
     public GameObject[] triggerAreaShow;
 
-    private bool allIsTriggered, allIsNotTriggered;
+    public bool allIsTriggered, allIsNotTriggered;
     //game assets
     public GameObject video_pos, video_neg;
     //happyEnd
@@ -131,6 +131,9 @@ public class gameController : MonoBehaviour
 
         //3d models
         trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         // trigger1.transform.GetComponent<Trigger1>().scale_orig_neg = trig1_negativeAction.transform.GetChild(1).localScale.x;
         // Debug.Log(trig1_negativeAction.transform.GetChild(1).localScale);
         // fade3D(0f, trig1_negativeAction.transform.GetChild(1));
@@ -351,11 +354,12 @@ public class gameController : MonoBehaviour
             }
         }
 
+        //happy end
         if(allIsTriggered){
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 60f){
+            }else if((Time.time - time_happyEnd) < 40f){
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
                 video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
@@ -394,11 +398,12 @@ public class gameController : MonoBehaviour
             }
         }
 
+        //sad end
         if(allIsNotTriggered){
             if(!startMeasuring_sadEnd){
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
-            }else if((Time.time - time_sadEnd) < 60f){
+            }else if((Time.time - time_sadEnd) < 40f){
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
                 video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();

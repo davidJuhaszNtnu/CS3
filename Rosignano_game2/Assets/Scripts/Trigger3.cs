@@ -59,6 +59,12 @@ public class Trigger3 : MonoBehaviour
     }
 
     void Update(){
+        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
+            gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+            time_elapsed_pos = true;
+            time_elapsed_neg = true;
+        }
+        
         if(mIsTriggered){
             if(!time_elapsed_pos){
                 //fade in pos
@@ -66,6 +72,9 @@ public class Trigger3 : MonoBehaviour
                     t_pos += 0.01f;
                     fade(t_pos, gameController.trig3_positiveAction);
                 }
+                //3d model
+                gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
+
                 //fade out neg
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
@@ -77,6 +86,8 @@ public class Trigger3 : MonoBehaviour
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig3_positiveAction);
                 }
+                //3d model
+                gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         else{
@@ -91,6 +102,8 @@ public class Trigger3 : MonoBehaviour
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig3_positiveAction);
                 }
+                //3d model
+                gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out neg
                 if(t_neg > 0f){
@@ -137,7 +150,7 @@ public class Trigger3 : MonoBehaviour
             if(!mIsTriggered){
                 time_pos = Time.time;
             }
-            if((Time.time - time_pos) < 5f)
+            if((Time.time - time_pos) < 20f)
                 time_elapsed_pos = false;
             else time_elapsed_pos = true;
 
@@ -146,7 +159,7 @@ public class Trigger3 : MonoBehaviour
             if(mIsTriggered){
                 time_neg = Time.time;
             }
-            if((Time.time - time_neg) < 5f)
+            if((Time.time - time_neg) < 20f)
                 time_elapsed_neg = false;
             else time_elapsed_neg = true;
 

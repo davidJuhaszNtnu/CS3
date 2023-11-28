@@ -78,6 +78,13 @@ public class Trigger1 : MonoBehaviour
     }
 
     void Update(){
+        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
+            gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+            gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+            time_elapsed_pos = true;
+            time_elapsed_neg = true;
+        }
+        
         if(mIsTriggered){
             if(!time_elapsed_pos){
                 //fade in pos
@@ -85,6 +92,8 @@ public class Trigger1 : MonoBehaviour
                     t_pos += 0.01f;
                     fade(t_pos, gameController.trig1_positiveAction);
                 }
+                //3d model
+                gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
 
                 //fade out neg
                 if(t_neg > 0f){
@@ -100,6 +109,8 @@ public class Trigger1 : MonoBehaviour
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig1_positiveAction);
                 }
+                //3d model
+                gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         else{
@@ -112,11 +123,14 @@ public class Trigger1 : MonoBehaviour
                 }
                 //3d model
                 gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+
                 //fade out pos
                 if(t_pos > 0f){
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig1_positiveAction);
                 }
+                //3d model
+                gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out neg
                 if(t_neg > 0f){
@@ -166,7 +180,7 @@ public class Trigger1 : MonoBehaviour
             if(!mIsTriggered){
                 time_pos = Time.time;
             }
-            if((Time.time - time_pos) < 5f)
+            if((Time.time - time_pos) < 20f)
                 time_elapsed_pos = false;
             else time_elapsed_pos = true;
 
