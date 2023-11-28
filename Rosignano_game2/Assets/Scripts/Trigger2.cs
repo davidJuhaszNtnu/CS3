@@ -59,12 +59,6 @@ public class Trigger2 : MonoBehaviour
     }
 
     void Update(){
-        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
-            gameController.trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
-            time_elapsed_pos = true;
-            time_elapsed_neg = true;
-        }
-
         // Debug.Log(time_elapsed_neg);
         if(mIsTriggered){
             if(!time_elapsed_pos){
@@ -122,8 +116,6 @@ public class Trigger2 : MonoBehaviour
 
         if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
             gameController.trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
-            time_elapsed_pos = true;
-            time_elapsed_neg = true;
         }
     }
 

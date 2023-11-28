@@ -78,13 +78,6 @@ public class Trigger1 : MonoBehaviour
     }
 
     void Update(){
-        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
-            gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
-            gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
-            time_elapsed_pos = true;
-            time_elapsed_neg = true;
-        }
-
         if(mIsTriggered){
             if(!time_elapsed_pos){
                 //fade in pos
@@ -153,8 +146,6 @@ public class Trigger1 : MonoBehaviour
         if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
             gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
-            time_elapsed_pos = true;
-            time_elapsed_neg = true;
         }
     }
 
