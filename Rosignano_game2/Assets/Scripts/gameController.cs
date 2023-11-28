@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using UnityEngine.Video;
 
 public class gameController : MonoBehaviour
 {
@@ -89,6 +90,8 @@ public class gameController : MonoBehaviour
     private float time_sadEnd;
     private bool sadEndOn;
     private float t_videos_neg;
+
+    private AudioSource audioSource;
     
 
     void Start()

@@ -64,7 +64,7 @@ public class Trigger3 : MonoBehaviour
             time_elapsed_pos = true;
             time_elapsed_neg = true;
         }
-        
+
         if(mIsTriggered){
             if(!time_elapsed_pos){
                 //fade in pos
@@ -118,6 +118,12 @@ public class Trigger3 : MonoBehaviour
             }
         }else if(isOff){
                 isOff = false;
+        }
+
+        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
+            gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+            time_elapsed_pos = true;
+            time_elapsed_neg = true;
         }
     }
 
