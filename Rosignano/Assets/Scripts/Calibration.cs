@@ -92,22 +92,27 @@ public class Calibration : MonoBehaviour
     }
 
     public void calibrateFirst(){
-        float offsetX, offsetY;
-        offsetX = 0.065f;
-        offsetY = 0.045f;
+        float offsetX, offsetY, height;
+        // offsetX = 0.065f;
+        // offsetY = 0.045f;
+        offsetX = 0.04f;
+        offsetY = -0.13f;
+        height = 0.81f;
 
         direction = secondPoint - firstPoint;
         direction = new Vector3(direction.x, 0f, direction.z);
-        // firstPoint += Vector3.Normalize(Quaternion.Euler(0, 90, 0) * direction) * (direction.magnitude * 0.66f / 2f + offsetX);
-        firstPoint += (Vector3.Normalize(new Vector3(direction.z, 0f, -direction.x))) * (direction.magnitude * 0.66f / 2f + offsetX);
-        firstPoint -= Vector3.Normalize(direction) * offsetY;
-        // secondPoint += (Vector3.Normalize(new Vector3(direction.z, 0f, -direction.x))) * (direction.magnitude * 0.66f / 2f + offsetX);
-        // secondPoint -= Vector3.Normalize(direction) * offsetY;
 
+        // firstPoint += (Vector3.Normalize(new Vector3(direction.z, 0f, -direction.x))) * (direction.magnitude * 0.66f / 2f + offsetX);
+        // firstPoint -= Vector3.Normalize(direction) * offsetY;
 
-        // aRScript.MakeContentAppearAt(transform, firstPoint, Quaternion.LookRotation(new Vector3(direction.x,0f,direction.z), Vector3.up));
-        worldCanvas.transform.position = (new Vector3(0f, worldCanvas.GetComponent<RectTransform>().sizeDelta.y/2f, direction.magnitude + offsetY*2));
-        objectController.GetComponent<objectController>().actualHeight = direction.magnitude + offsetY * 2;
+        firstPoint += (Vector3.Normalize(new Vector3(direction.z, 0f, -direction.x))) * (height * 0.66f / 2f + offsetX);
+        firstPoint -= Vector3.Normalize(direction) * (offsetY + height);
+
+        // worldCanvas.transform.position = (new Vector3(0f, worldCanvas.GetComponent<RectTransform>().sizeDelta.y/2f, direction.magnitude + offsetY*2));
+        // objectController.GetComponent<objectController>().actualHeight = direction.magnitude + offsetY * 2;
+        worldCanvas.transform.position = (new Vector3(0f, worldCanvas.GetComponent<RectTransform>().sizeDelta.y / 2f, height));
+        objectController.GetComponent<objectController>().actualHeight = height;
+        
         objectController.GetComponent<objectController>().scale = objectController.GetComponent<objectController>().actualHeight;
         // Debug.Log(direction.magnitude);
         objectController.GetComponent<objectController>().callibrateCreate();
