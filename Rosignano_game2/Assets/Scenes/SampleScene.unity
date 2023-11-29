@@ -938,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &170520684
 Transform:
   m_ObjectHideFlags: 0
@@ -10040,6 +10040,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1612197282}
     m_Modifications:
+    - target: {fileID: 4662111232806851260, guid: 9b49f86c89775de4aa1caa7e4a19d646, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7312447324341080318, guid: 9b49f86c89775de4aa1caa7e4a19d646, type: 3}
       propertyPath: m_Name
       value: City-Cecina_ON
@@ -10114,6 +10118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576072052}
     m_Modifications:
+    - target: {fileID: 7565796750307796478, guid: f0fa5dd56d0265a418dee9a2c0490b5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8186627781451398991, guid: f0fa5dd56d0265a418dee9a2c0490b5e, type: 3}
       propertyPath: m_Name
       value: City-Farm_ON
