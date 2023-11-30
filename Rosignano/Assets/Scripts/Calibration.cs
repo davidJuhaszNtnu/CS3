@@ -96,7 +96,7 @@ public class Calibration : MonoBehaviour
         // offsetX = 0.065f;
         // offsetY = 0.045f;
         offsetX = 0.04f;
-        offsetY = -0.13f;
+        offsetY = -0.16f;
         height = 0.81f;
 
         direction = secondPoint - firstPoint;
@@ -119,7 +119,7 @@ public class Calibration : MonoBehaviour
         objectController.GetComponent<objectController>().createRectangle();
         
 
-        transform.position = firstPoint + Vector3.Normalize(direction) * 0.02f + new Vector3(0f, 0f, 0f);
+        transform.position = firstPoint + Vector3.Normalize(direction) * 0f + new Vector3(0f, 0f, 0f);
         // transform.position = secondPoint + Vector3.Normalize(direction) * (0.1f - objectController.GetComponent<objectController>().actualHeight) + new Vector3(0f, 0f, 0f);
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
