@@ -105,6 +105,9 @@ public class TriggerLanguage : MonoBehaviour
                 mIsTriggered = false;
             }
         }
+
+        // if(Input.GetKeyDown(KeyCode.Alpha5))
+        //     Debug.Log(average);
     }
 
     private void changeToEnglish(){
