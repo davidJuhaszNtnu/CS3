@@ -7704,6 +7704,7 @@ MonoBehaviour:
   app: {fileID: 481294586}
   worldCanvas: {fileID: 696191826}
   languageChanger: {fileID: 859163573}
+  rectangleMaterial: {fileID: 2100000, guid: 6d249a05e35ea0f49af723787132c08f, type: 2}
   actualHeight: 0
   scale: 0
 --- !u!1 &1105180947

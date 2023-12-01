@@ -48,6 +48,7 @@ public class objectController : MonoBehaviour
     Vector3[] corners;
 
     public LanguageChanger languageChanger;
+    public Material rectangleMaterial;
 
 
     public float actualHeight, scale;
@@ -469,6 +470,7 @@ public class objectController : MonoBehaviour
         lr.startWidth=0.002f;
         lr.endWidth=0.002f;
         lr.SetPositions(corners);
+        lr.material = rectangleMaterial;
     }
 
     public void changeLanguage(int index){

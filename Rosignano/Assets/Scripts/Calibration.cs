@@ -69,20 +69,12 @@ public class Calibration : MonoBehaviour
                         if(hitObject.collider.tag=="point1" && !gotSecond){
                             gotFirst = true;
                             firstPoint = hitObject.transform.position + (new Vector3(0f, 0.06f, 0f));
-                            // GameObject sphere =  GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                            // sphere.transform.localScale *= 0.05f;
-                            // sphere.transform.position = firstPoint;
-                            // sphere.AddComponent<ARAnchor>();
-
-                            // transform.position = firstPoint;
                             calibration_image.sprite = rosignano_image;
-                            // calibrationText.text="Point your camera on the picture in top left corner of the map (Rosignano emblem) and click on the 3D object that appears.";
                         }
                         if(hitObject.collider.tag=="point2" && gotFirst){
                             gotSecond = true;
                             gotBoth = true;
                             secondPoint = hitObject.transform.position + (new Vector3(0f, 0.06f, 0f));
-                            // secondPoint = new Vector3(hitObject.transform.position.x, firstPoint.y, hitObject.transform.position.z) + (new Vector3(0f, 0.0f, 0f));
                             calibrateFirst();
                         }
                     }
@@ -97,7 +89,7 @@ public class Calibration : MonoBehaviour
         // offsetY = 0.045f;
         offsetX = 0.04f;
         offsetY = -0.16f;
-        height = 0.81f;
+        height = 0.8f;
 
         direction = secondPoint - firstPoint;
         direction = new Vector3(direction.x, 0f, direction.z);
@@ -119,7 +111,7 @@ public class Calibration : MonoBehaviour
         objectController.GetComponent<objectController>().createRectangle();
         
 
-        transform.position = firstPoint + Vector3.Normalize(direction) * 0f + new Vector3(0f, 0f, 0f);
+        transform.position = firstPoint + new Vector3(0f, 0f, 0f);
         // transform.position = secondPoint + Vector3.Normalize(direction) * (0.1f - objectController.GetComponent<objectController>().actualHeight) + new Vector3(0f, 0f, 0f);
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
