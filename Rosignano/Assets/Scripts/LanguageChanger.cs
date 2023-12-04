@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LanguageChanger : MonoBehaviour
 {   
-    public TextMeshProUGUI welcome_text1, welcome_text2, calibration_text;
+    public TextMeshProUGUI welcome_text1, welcome_text2, welcome_text3, welcome_text4, calibration_text;
     //------layer1-----------
     public TextMeshProUGUI screenCanvas_layer1_title, screenCanvas_layer1_button1, screenCanvas_layer1_button2, screenCanvas_layer1_button3, screenCanvas_layer1_button4;
     //ground
@@ -63,12 +63,16 @@ public class LanguageChanger : MonoBehaviour
     public void changetoEnglish_welcomePanel(){
         welcome_text1.text = "Welcome to Biblioteca Comunale Bottini dell'Olio!";
         welcome_text2.text = "This is an interactive experience to show water symbiosis in Cecina and Rosignano.\n\nTo begin please follow the instructions on the next screen.";
+        welcome_text3.text = "Welcome to Biblioteca Comunale Bottini dell'Olio!";
+        welcome_text4.text = "In case you are not situated at the library, please visit\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand download map.png. Otherwise, ignore this and proceed.";
         calibration_text.text = "Point your screen at this image";
      }
 
      public void changetoItalian_welcomePanel(){
         welcome_text1.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
         welcome_text2.text = "Questa è un’esperienza interattiva per mostrare la simbiosi dell’acqua a Cecina e Rosignano.\n\nPer iniziare, per favore, segui le istruzioni nella prossima schermata.";
+        welcome_text3.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
+        welcome_text4.text = "In case you are not situated at the library, please visit\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand download map.png. Otherwise, ignore this and proceed. (italian)";
         calibration_text.text = "Inquadra l’ immagine";
      }
 

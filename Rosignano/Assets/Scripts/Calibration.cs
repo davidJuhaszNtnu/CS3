@@ -16,7 +16,7 @@ public class Calibration : MonoBehaviour
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private ARRaycastManager arRaycastManager;
 
-    public GameObject calibrationPanel, welcomePanel, appPanel, worldCanvas, objectController, app;
+    public GameObject calibrationPanel, welcomePanel, welcomePanel2, appPanel, worldCanvas, objectController, app;
     public GameObject[] infoPanels;
     public bool gotFirst, gotSecond, gotBoth;
     public TextMeshProUGUI calibrationText;
@@ -36,6 +36,7 @@ public class Calibration : MonoBehaviour
         calibrationPanel.SetActive(false);
         appPanel.SetActive(false);
         welcomePanel.SetActive(true);
+        welcomePanel2.SetActive(false);
         objectController.GetComponent<objectController>().languageChanger.changetoItalian_welcomePanel();
         worldCanvas.SetActive(true);
         foreach(GameObject infoPanel in infoPanels)
@@ -125,7 +126,16 @@ public class Calibration : MonoBehaviour
 
     public void ok_welcome(){
         welcomePanel.SetActive(false);
+        welcomePanel2.SetActive(true);
+    }
+
+    public void ok_welcome2(){
+        welcomePanel2.SetActive(false);
         calibrationPanel.SetActive(true);
+    }
+
+    public void clickOnLink(){
+        Application.OpenURL("https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/");
     }
 
     public void exit(){
