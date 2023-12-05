@@ -13903,7 +13903,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "In case you are not situated at the library, please visit\n <link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand
-    download map.png. Otherwise, ignore this and proceed."
+    download map.jpg. Otherwise, ignore this and proceed."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
