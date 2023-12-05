@@ -72,7 +72,7 @@ public class LanguageChanger : MonoBehaviour
         welcome_text1.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
         welcome_text2.text = "Questa è un’esperienza interattiva per mostrare la simbiosi dell’acqua a Cecina e Rosignano.\n\nPer iniziare, per favore, segui le istruzioni nella prossima schermata.";
         welcome_text3.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
-        welcome_text4.text = "In case you are not situated at the library, please visit\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand download map.jpg. Otherwise, ignore this and proceed. (italian)";
+        welcome_text4.text = "Nel caso in cui non ti trovi in biblioteca, visita il\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\ne scarica map.jpg. Altrimenti, ignora questo messaggio e procedi.";
         calibration_text.text = "Inquadra l’ immagine";
      }
 

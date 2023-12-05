@@ -9885,8 +9885,8 @@ RectTransform:
   m_Father: {fileID: 1685035227}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.22200002}
-  m_AnchorMax: {x: 0.5, y: 0.22200002}
+  m_AnchorMin: {x: 0.5, y: 0.18300001}
+  m_AnchorMax: {x: 0.5, y: 0.18300001}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13902,7 +13902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "In case you are not situated at the library, please visit\n <link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand
+  m_text: "In case you are not situated at the library, please visit\n\n <link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand
     download map.jpg. Otherwise, ignore this and proceed."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
