@@ -19,11 +19,11 @@ public class Calibration : MonoBehaviour
     public GameObject calibrationPanel, welcomePanel, welcomePanel2, appPanel, worldCanvas, objectController, app;
     public GameObject[] infoPanels;
     public bool gotFirst, gotSecond, gotBoth;
-    public TextMeshProUGUI calibrationText;
     public Vector3 firstPoint, secondPoint, direction;
     public Sprite rosignano_image;
     public Image calibration_image;
     private float firstHeight;
+    public bool calibrationOn;
 
     private GameObject aRSessionOrigin;
 
@@ -45,6 +45,7 @@ public class Calibration : MonoBehaviour
         gotFirst = false;
         gotSecond = false;
         gotBoth = false;
+        calibrationOn = true;
 
         // firstPoint = new Vector3(0f, 0f, 0f);
         // secondPoint = new Vector3(0f, 0f, 1f);
@@ -85,6 +86,7 @@ public class Calibration : MonoBehaviour
     }
 
     public void calibrateFirst(){
+        calibrationOn = false;
         float offsetX, offsetY, height;
         // offsetX = 0.065f;
         // offsetY = 0.045f;
