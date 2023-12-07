@@ -133,10 +133,11 @@ public class gameController : MonoBehaviour
         fade_idle(0f,0f, 0f, true, true, true);
 
         //3d models
-        trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        // trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
         trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         // trigger1.transform.GetComponent<Trigger1>().scale_orig_neg = trig1_negativeAction.transform.GetChild(1).localScale.x;
         // Debug.Log(trig1_negativeAction.transform.GetChild(1).localScale);
         // fade3D(0f, trig1_negativeAction.transform.GetChild(1));

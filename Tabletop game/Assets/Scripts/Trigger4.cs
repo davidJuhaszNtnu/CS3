@@ -66,6 +66,8 @@ public class Trigger4 : MonoBehaviour
                     t_pos += 0.01f;
                     fade(t_pos, gameController.trig4_positiveAction);
                 }
+                //3d model
+                gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
                 //fade out neg
                 if(t_neg > 0f){
                     t_neg -= 0.01f;
@@ -77,6 +79,8 @@ public class Trigger4 : MonoBehaviour
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig4_positiveAction);
                 }
+                //3d model
+                gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         else{
@@ -91,6 +95,8 @@ public class Trigger4 : MonoBehaviour
                     t_pos -= 0.01f;
                     fade(t_pos, gameController.trig4_positiveAction);
                 }
+                //3d model
+                gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out neg
                 if(t_neg > 0f){
@@ -105,6 +111,10 @@ public class Trigger4 : MonoBehaviour
             }
         }else if(isOff){
                 isOff = false;
+        }
+
+        if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
+            gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 
@@ -137,7 +147,7 @@ public class Trigger4 : MonoBehaviour
             if(!mIsTriggered){
                 time_pos = Time.time;
             }
-            if((Time.time - time_pos) < 5f)
+            if((Time.time - time_pos) < 20f)
                 time_elapsed_pos = false;
             else time_elapsed_pos = true;
 
@@ -146,7 +156,7 @@ public class Trigger4 : MonoBehaviour
             if(mIsTriggered){
                 time_neg = Time.time;
             }
-            if((Time.time - time_neg) < 5f)
+            if((Time.time - time_neg) < 20f)
                 time_elapsed_neg = false;
             else time_elapsed_neg = true;
 

@@ -95,7 +95,7 @@ public class Trigger1 : MonoBehaviour
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
                 //fade out pos
                 if(t_pos > 0f){
@@ -115,7 +115,7 @@ public class Trigger1 : MonoBehaviour
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
 
                 //fade out pos
                 if(t_pos > 0f){
@@ -132,7 +132,7 @@ public class Trigger1 : MonoBehaviour
                     // fade3D(t_neg, gameController.trig1_negativeAction.transform.GetChild(1));
                 }
                 //3d model
-                gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         if(t_pos <= 0f && t_neg <= 0f){
@@ -144,7 +144,7 @@ public class Trigger1 : MonoBehaviour
         }
 
         if(gameController.transform.GetComponent<gameController>().allIsTriggered || gameController.transform.GetComponent<gameController>().allIsNotTriggered){
-            gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+            // gameController.trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             gameController.trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
