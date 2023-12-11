@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LanguageChanger : MonoBehaviour
 {   
     public GameObject app;
-    public TextMeshProUGUI welcome_text1, welcome_text2, welcome_text3, welcome_text4, calibration_text;
+    public TextMeshProUGUI welcome_text1, welcome_text2, welcome_text3, welcome_text4, welcome_text5, calibration_text;
     //------layer1-----------
     public TextMeshProUGUI screenCanvas_layer1_title, screenCanvas_layer1_button1, screenCanvas_layer1_button2, screenCanvas_layer1_button3, screenCanvas_layer1_button4;
     //ground
@@ -65,7 +65,8 @@ public class LanguageChanger : MonoBehaviour
         welcome_text1.text = "Welcome to Biblioteca Comunale Bottini dell'Olio!";
         welcome_text2.text = "This is an interactive experience to show water symbiosis in Cecina and Rosignano.\n\nTo begin please follow the instructions on the next screen.";
         welcome_text3.text = "Welcome to Biblioteca Comunale Bottini dell'Olio!";
-        welcome_text4.text = "In case you are not situated at the library, please visit\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\nand download map.jpg. Once downloaded, print it and lay it down on a flat surface. Otherwise, ignore this and proceed.";
+        welcome_text4.text = "If you wish to experience water symbiosis between Cecina and Rosignano area offsite, you can grab the Map (map.jpg) by downloading it from this link";
+        welcome_text5.text = "Otherwise, you can find it installed at the Livorno library. Enjoy.";
         calibration_text.text = "Point your screen at this image";
      }
 
@@ -73,7 +74,8 @@ public class LanguageChanger : MonoBehaviour
         welcome_text1.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
         welcome_text2.text = "Questa è un’esperienza interattiva per mostrare la simbiosi dell’acqua a Cecina e Rosignano.\n\nPer iniziare, per favore, segui le istruzioni nella prossima schermata.";
         welcome_text3.text = "Benvenuti alla Biblioteca Comunale Bottini dell’Olio!";
-        welcome_text4.text = "Nel caso in cui non ti trovi in biblioteca, visita il\n\n<link=\"https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/\">https://folk.ntnu.no/davidju/L'acqua%20Per%20Tutti/</link>\n\ne scarica map.jpg. Una volta scaricato, stampalo e posizionalo su una superficie piana. Altrimenti, ignora questo messaggio e procedi.";
+        welcome_text4.text = "Se desideri vivere l'esperienza della simbiosi d'acqua tra Cecina e la zona di Rosignano, puoi ottenere la mappa (map.jpg) scaricandola da questo link";
+        welcome_text5.text = "In caso contrario, la troverai installata presso la biblioteca di Livorno. Buon divertimento.";
         calibration_text.text = "Inquadra l’ immagine";
      }
 
