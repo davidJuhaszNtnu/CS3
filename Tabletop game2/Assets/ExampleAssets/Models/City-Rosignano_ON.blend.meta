@@ -1,0 +1,458 @@
+fileFormatVersion: 2
+guid: fe72392b5bd5040d68b8ab2465e5a9fe
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HighFactory_Base002_Mask.002
+    second: {fileID: 2100000, guid: 22de9ccf3bcad4fc9b81049018f1cb75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Industry_transport
+    second: {fileID: 2100000, guid: feb6dbdd592944662b9a092e5d324979, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MT_Others_Props_01.001
+    second: {fileID: 2100000, guid: 896dfb5e7c65d4d60b1d81698bc0ed89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Vehicle_Damage_01
+    second: {fileID: 2100000, guid: 55f11043f81f049ee8528dd6703b7b58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Vehicle_Glass.001
+    second: {fileID: 2100000, guid: 588bf03490c41418aa3cd7b59f6d889f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #113.001
+    second: {fileID: 2100000, guid: 7e79e424600954c599a6a6afe389fcbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #114.001
+    second: {fileID: 2100000, guid: 958d437599f904aa4b02155e8780f3b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 688e86bc2a3e942668477212a91b1838, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material2
+    second: {fileID: 2100000, guid: d40cda8a293e24045a754fd80d3b5d36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nuc_Base002_Diffuse.002
+    second: {fileID: 2100000, guid: c5007e39b3b6643329bb7f91fab5bc5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nuc_Base003.001
+    second: {fileID: 2100000, guid: 9ba675a46ae394134a8ed2778fa11b15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nuc_Base003_Diffuse.002
+    second: {fileID: 2100000, guid: a6191d60e4b974418aaec1e194589d01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Osso0
+    second: {fileID: 2100000, guid: 3d101d30ac4224bae860562230d1c5b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0099_0.dds
+    second: {fileID: 2100000, guid: c26eafdb7e55342a3b1d466db7d51300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0207_0.dds
+    second: {fileID: 2100000, guid: 942ce5e1ca5284aa6954706af6d30dcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0423_0.dds
+    second: {fileID: 2100000, guid: 9e531000e0512438c815ecbbea08c53b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0639_0.dds
+    second: {fileID: 2100000, guid: 8192a48ded5684b0295f169ce392ecb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0657_0.dds
+    second: {fileID: 2100000, guid: cbd73b310cc0a4ffbbb8dd3e1308e01f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0693_0.dds
+    second: {fileID: 2100000, guid: a3213a5937169455c9f98a037ef71902, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0801_0.dds.003
+    second: {fileID: 2100000, guid: 7429c4d5f9fb64503822f39a9249b3fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0945_0.dds
+    second: {fileID: 2100000, guid: a733b3821fefb4efa991813327235323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0981_0.dds
+    second: {fileID: 2100000, guid: b044bca239152499ba00efcc2d67bc02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0999_0.dds
+    second: {fileID: 2100000, guid: 8bd5caf20a39641d98dd90572fd6847d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_0999_0.dds.001
+    second: {fileID: 2100000, guid: 469a9ab9114e2482cb853530405ae407, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_1017_0.dds
+    second: {fileID: 2100000, guid: 6a940c9e70e92467c930acadbbb85615, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_1035_0.dds
+    second: {fileID: 2100000, guid: 58821938dbd0e45ea99750e7ab95d209, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_1251_0.dds
+    second: {fileID: 2100000, guid: 6a33d9fa8d80141d9bed76cc7c840018, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_1269_0.dds
+    second: {fileID: 2100000, guid: fb1679df5dc864b1c878d615a6d35470, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_1377_0.dds
+    second: {fileID: 2100000, guid: ee798f8bf23274b02af6141758ac75a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tex_trucksmall
+    second: {fileID: 2100000, guid: 310ec9b8356324672ae72d032f4debee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ambulance
+    second: {fileID: 2100000, guid: a0c99f1ff854b49219902d839ab658f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: building_industry
+    second: {fileID: 2100000, guid: a77410474d1dc4abf981b349e595bd3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: car
+    second: {fileID: 2100000, guid: 741e9c99801a84692a408394f9c38956, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: car inside
+    second: {fileID: 2100000, guid: 071a6e1abe14b45ada4c3e4e611c47ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: car1
+    second: {fileID: 2100000, guid: d62950abd4297428596d32af85c7ddd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: decals_tex
+    second: {fileID: 2100000, guid: 3b87c285e1175474a8d2626bb0b76af2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: decals_tex_amb
+    second: {fileID: 2100000, guid: e7bfa8a64281a4ec88a17d6d4219b668, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: decals_tex_service
+    second: {fileID: 2100000, guid: 274cb848d6004490e80d40be0536ce97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elc
+    second: {fileID: 2100000, guid: 22774989de983416db35875c336ecf8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: firetruck
+    second: {fileID: 2100000, guid: ff5f726a8c6a54feda3b0a2008952ccc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: firetruck_decals
+    second: {fileID: 2100000, guid: 0ce6d971b434c482084c7258351fdf9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: firetruck_glass
+    second: {fileID: 2100000, guid: 51226fc18eb154ddbaf33642bda6f0e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: garbagetruck_glass
+    second: {fileID: 2100000, guid: 390c1b7de85cf47f997f77c6bbdf835d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: garbagetruck_tex
+    second: {fileID: 2100000, guid: 0a9f7ee466a724510a6d21266af68a76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 93f1902dcd6444e0987e583f131ed5c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_tex
+    second: {fileID: 2100000, guid: 432fd19527c6b42f0b592be3464ebda4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_tex_amb
+    second: {fileID: 2100000, guid: a7a3a6c6a889e4d62aff94c51ee616c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle_
+    second: {fileID: 2100000, guid: e3ab13b1ba4f24045b241317365e93f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: optics_tex
+    second: {fileID: 2100000, guid: 38f1d697c800d40b093741af386a9d40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: optics_tex-fire
+    second: {fileID: 2100000, guid: 203d37344976d4f94909fd3e7a6d4d02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: optics_tex_bus
+    second: {fileID: 2100000, guid: 1720cd7835ff64ba49523fca55a6db23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: optics_tex_service
+    second: {fileID: 2100000, guid: d911739d9aa424fa6a33cf5c27f69dc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: optics_tex_truck
+    second: {fileID: 2100000, guid: 25972ae76a7954471921a94e7a65373e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange
+    second: {fileID: 2100000, guid: 743beeeb4cdc4401abce565cde30c4d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pipe
+    second: {fileID: 2100000, guid: 0b8c82d68da7647ecb1a865deae32aa6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_decal
+    second: {fileID: 2100000, guid: 56693b10a197b4c3a852288efc4c91a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_glass
+    second: {fileID: 2100000, guid: ceb6e672635c944569fc5dda0cd9e367, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: police_sedan
+    second: {fileID: 2100000, guid: 9c9bc91d97c074b15b4cbf838fcf2e1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: postvan
+    second: {fileID: 2100000, guid: 762339f5600d045999352cf7ab7576b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: postvan_decal
+    second: {fileID: 2100000, guid: 2611c05b39a9b48d387aa621009663a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: postvan_glass
+    second: {fileID: 2100000, guid: b5acfc333ad3040b4941e8247dcd955f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schoolbus_glass
+    second: {fileID: 2100000, guid: 0b8446e8f347f495eabe9aebc987e7e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schoolbus_tex
+    second: {fileID: 2100000, guid: 8cd5435c7477f4d57a7b80b6f55bfd66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: servicetruck_tex
+    second: {fileID: 2100000, guid: 19ce709f995a943c1a9cde2dc58518d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sign
+    second: {fileID: 2100000, guid: f37a2fc3acf524af3aedf643e9f44a5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: taxi
+    second: {fileID: 2100000, guid: 36ff8d85edc6943bf8a6359eef9ff350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: taxi_decal
+    second: {fileID: 2100000, guid: b403c99c94c644dddb4f708e4af5990a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: taxi_glass
+    second: {fileID: 2100000, guid: 01bbcc6435f0b4d3f9d8d0f2a4da016d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wheel
+    second: {fileID: 2100000, guid: db22ec7af4ef641b0b60f22508031a8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wheel1
+    second: {fileID: 2100000, guid: dc268322eedfc4449b35b1e6a43fc9ba, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
