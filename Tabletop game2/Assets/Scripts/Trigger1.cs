@@ -63,16 +63,6 @@ public class Trigger1 : MonoBehaviour
         action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
     }
     
-    // private void fade3D(float t, Transform model){
-    //     foreach(Transform child in model){
-    //         if(child.GetComponent<Renderer>() != null)
-    //             foreach(Material material in child.GetComponent<Renderer>().materials){
-    //                 c = material.color;
-    //                 c.a = t;
-    //                 material.color = c;
-    //             }
-    //     }
-    // }
     private void fade3D(float t, Transform model){
         model.localScale = Vector3.one * t * scale_orig_neg;
     }

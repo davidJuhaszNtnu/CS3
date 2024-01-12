@@ -171,19 +171,6 @@ public class gameController : MonoBehaviour
         mCamera = Camera.main;
     }
 
-    // private void fade3D(float t, Transform model){
-    //     foreach(Transform child in model){
-    //         if(child.GetComponent<Renderer>() != null)
-    //             foreach(Material material in child.GetComponent<Renderer>().materials){
-    //                 material.SetFloat("_Mode", 3);
-    //                 c = material.color;
-    //                 c.a = 0;
-    //                 c.r = 0;
-    //                 material.color = c;
-    //                 // material.SetColor("_Color", c);
-    //             }
-    //     }
-    // }
     private void fade3D(float t, Transform model){
         model.localScale = Vector3.one * t;
     }
