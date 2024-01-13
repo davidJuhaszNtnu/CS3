@@ -56,6 +56,7 @@ public class gameController : MonoBehaviour
 
     public GameObject trig1_positiveAction, trig1_negativeAction, trig2_positiveAction, trig2_negativeAction, trig3_positiveAction, trig3_negativeAction, 
     trig4_positiveAction, trig4_negativeAction;
+    private GameObject[] circles;
     Color c;
 
     public GameObject trigger1, trigger2, trigger3, trigger4;
@@ -91,7 +92,9 @@ public class gameController : MonoBehaviour
     private bool sadEndOn;
     private float t_videos_neg;
 
-    private AudioSource audioSource;
+    //circles logic
+    public bool smthIsOn;
+    public bool[] showing;
     
 
     void Start()
@@ -110,6 +113,14 @@ public class gameController : MonoBehaviour
         trig3_negativeAction = trigger3Action.transform.GetChild(1).gameObject;
         trig4_positiveAction = trigger4Action.transform.GetChild(0).gameObject;
         trig4_negativeAction = trigger4Action.transform.GetChild(1).gameObject;
+        circles = new GameObject[4];
+        showing = new bool[4];
+        circles[0] = trigger1Action.transform.GetChild(2).gameObject;
+        circles[1] = trigger2Action.transform.GetChild(2).gameObject;
+        circles[2] = trigger3Action.transform.GetChild(2).gameObject;
+        circles[3] = trigger4Action.transform.GetChild(2).gameObject;
+        foreach(GameObject circle in circles)
+            circle.SetActive(false);
 
         trig1_positiveAction.SetActive(true);
         trig2_positiveAction.SetActive(true);
@@ -117,23 +128,15 @@ public class gameController : MonoBehaviour
         trig4_positiveAction.SetActive(true);
 
         //fade away the clouds
-        //lake
-        fade(0f, trig1_positiveAction);
-        fade(0f, trig1_negativeAction);
-        //wwtp
-        fade(0f, trig2_positiveAction);
-        fade(0f, trig2_negativeAction);
-        //house
-        fade(0f, trig3_positiveAction);
-        fade(0f, trig3_negativeAction);
-        //island
-        fade(0f, trig4_positiveAction);
-        fade(0f, trig4_negativeAction);
         //idle
         fade_idle(0f,0f, 0f, true, true, true);
 
         //3d models
         // trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig1_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
+        trig2_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
+        trig3_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
+        trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
         trig1_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
         trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
@@ -157,6 +160,9 @@ public class gameController : MonoBehaviour
         allIsNotTriggered = false;
         sadEndOn = false;
         t_videos_neg = 0f;
+
+        //circle logic
+        smthIsOn = false;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -215,6 +221,16 @@ public class gameController : MonoBehaviour
         }
     }
 
+    private void updateTriggered(){
+        showing[0] = trigger1.GetComponent<Trigger1>().isShowing;
+        showing[1] = trigger2.GetComponent<Trigger2>().isShowing;
+        showing[2] = trigger3.GetComponent<Trigger3>().isShowing;
+        showing[3] = trigger4.GetComponent<Trigger4>().isShowing;
+        for(int i = 0; i < 4; i++){
+
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -257,8 +273,18 @@ public class gameController : MonoBehaviour
             allIsNotTriggered = true;
         }else allIsNotTriggered = false;
         // Debug.Log(allIsTriggered);
+        if(trigger1.GetComponent<Trigger1>().isShowing || trigger2.GetComponent<Trigger2>().isShowing || trigger3.GetComponent<Trigger3>().isShowing || trigger4.GetComponent<Trigger4>().isShowing){
+            smthIsOn = true;
+        }else smthIsOn = false;
+
+        updateTriggered();
+        Debug.Log(smthIsOn);
 
         if(allIsOff && !happyEndOn){
+            //circle
+            
+            
+            //idle
             if(!startMeasuring_idle){
                 startMeasuring_idle = true;
                 time_idle = Time.time;
@@ -350,7 +376,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 40f){
+            }else if((Time.time - time_happyEnd) < 2f){
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
                 video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
@@ -394,7 +420,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_sadEnd){
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
-            }else if((Time.time - time_sadEnd) < 40f){
+            }else if((Time.time - time_sadEnd) < 2f){
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
                 video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();

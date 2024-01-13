@@ -8,15 +8,13 @@ public class Trigger2 : MonoBehaviour
 {
     public int averageTarget;
     public bool mIsTriggered;
-    private bool time_elapsed_pos, time_elapsed_neg;
+    public bool time_elapsed_pos, time_elapsed_neg;
 
     private Camera mCamera = null;
     private RectTransform mRectTransform = null;
 
-    private Color c;
     public gameController gameController;
 
-    private float t_pos, t_neg;
     private float time_pos, time_neg;
 
     //averaging
@@ -25,7 +23,10 @@ public class Trigger2 : MonoBehaviour
     private int sum;
     public float average;
 
-    public bool isOff;
+    public bool isOff, isShowing;
+
+    //home version
+    private bool condition;
 
     private void Awake(){
         gameController.OnTrigger2Points += OnTrigger2Points;
@@ -33,8 +34,6 @@ public class Trigger2 : MonoBehaviour
         mCamera = Camera.main;
         mRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
 
-        t_pos = 0f;
-        t_neg = 0f;
         time_pos = -99999f;
         time_neg = -99999f;
         time_elapsed_pos = true;
@@ -45,68 +44,50 @@ public class Trigger2 : MonoBehaviour
             numberOfPoints[i] = 0;
         }
         sum = 0;
-    }
 
-    private void fade(float t, GameObject action){
-        //image
-        c = action.transform.GetChild(0).GetComponent<Image>().color;
-        c.a = t;
-        action.transform.GetChild(0).GetComponent<Image>().color = c;
-        //text
-        c = action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color;
-        c.a = t;
-        action.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
+        //home version
+        condition = false;
     }
 
     void Update(){
-        // Debug.Log(time_elapsed_neg);
+        //home version
+        OnTrigger2();
+
+        if(!time_elapsed_pos || !time_elapsed_neg)
+            isShowing = true;
+        else isShowing = false;
+
         if(mIsTriggered){
             if(!time_elapsed_pos){
-                //fade in pos
-                if(t_pos < 1f){
-                    t_pos += 0.01f;
-                    fade(t_pos, gameController.trig2_positiveAction);
-                }
-                //3d model
+                //turn on pos
+                gameController.trig2_positiveAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
-                //fade out neg
-                if(t_neg > 0f){
-                    t_neg -= 0.01f;
-                    fade(t_neg, gameController.trig2_negativeAction);
-                }
+
+                //turn off neg
+                gameController.trig2_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
+                // gameController.trig2_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
-                //fade out pos
-                if(t_pos > 0f){
-                    t_pos -= 0.01f;
-                    fade(t_pos, gameController.trig2_positiveAction);
-                }
-                //3d model
+                //turn off pos
+                gameController.trig2_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         else{
             if(!time_elapsed_neg){
-                //fade in neg
-                if(t_neg < 1f){
-                    t_neg += 0.01f;
-                    fade(t_neg, gameController.trig2_negativeAction);
-                }
-                //fade out pos
-                if(t_pos > 0f){
-                    t_pos -= 0.01f;
-                    fade(t_pos, gameController.trig2_positiveAction);
-                }
-                //3d model
+                //turn on neg
+                gameController.trig2_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
+                // gameController.trig2_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+
+                //turn off pos
+                gameController.trig2_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig2_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
             }else{
-                //fade out neg
-                if(t_neg > 0f){
-                    t_neg -= 0.01f;
-                    fade(t_neg, gameController.trig2_negativeAction);
-                }
+                //turn off neg
+                gameController.trig2_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
+                // gameController.trig2_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
-        if(t_pos <= 0f && t_neg <= 0f){
+        if(time_elapsed_pos && time_elapsed_neg){
             if(!isOff){
                 isOff = true;
             }
@@ -121,6 +102,35 @@ public class Trigger2 : MonoBehaviour
 
     private void OnDestroy(){
         gameController.OnTrigger2Points -= OnTrigger2Points;
+    }
+
+    //home version
+    private void OnTrigger2(){
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+            condition = condition ? false : true;
+            // Debug.Log(condition);
+        }
+
+        // if(!gameController.GetComponent<gameController>().showing[0] && !gameController.GetComponent<gameController>().showing[2] && !gameController.GetComponent<gameController>().showing[3])
+        if(condition){
+            if(!mIsTriggered){
+                time_pos = Time.time;
+            }
+            if((Time.time - time_pos) < 5f)
+                time_elapsed_pos = false;
+            else time_elapsed_pos = true;
+
+            mIsTriggered = true;
+        }else{
+            if(mIsTriggered){
+                time_neg = Time.time;
+            }
+            if((Time.time - time_neg) < 5f)
+                time_elapsed_neg = false;
+            else time_elapsed_neg = true;
+
+            mIsTriggered = false;
+        }
     }
 
     private void OnTrigger2Points(List<Vector2> triggerPoints){
