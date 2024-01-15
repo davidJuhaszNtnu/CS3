@@ -24,7 +24,7 @@ public class Trigger4 : MonoBehaviour
     public float average;
 
     public bool isOff, start_measuring_pos, isShowing_pos, finished_pos;
-    public bool start_measuring_neg, isShowing_neg, finished_neg;
+    public bool start_measuring_neg, isShowing_neg, finished_neg, negative_activated;
     private bool start_measuring_On, start_measuring_Off;
     private float time_trigOn, time_trigOff;
 
@@ -48,6 +48,7 @@ public class Trigger4 : MonoBehaviour
         isShowing_neg = false;
         finished_neg = false;
         start_measuring_neg = false;
+        negative_activated = false;
 
         numberOfPoints = new int[n];
         for(int i = 0; i < n; i++){
@@ -84,16 +85,17 @@ public class Trigger4 : MonoBehaviour
                 time_neg = Time.time;
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
                 // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_pos > 5f){
+            }else if(Time.time - time_neg > 5f){
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
                 // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_neg = false;
                 start_measuring_neg = false;
                 finished_neg = true;
+                negative_activated = false;
             }
         }
 
-        if(!start_measuring_pos){
+        if(!start_measuring_pos && !start_measuring_neg){
             isOff = true;
         }else isOff = false;
     }
@@ -116,6 +118,7 @@ public class Trigger4 : MonoBehaviour
             }else if((Time.time - time_trigOn) > 2f){
                 mIsTriggered = true;
                 start_measuring_Off = false;
+                finished_neg = false;
             }
 
             // mIsTriggered = true;
@@ -124,6 +127,8 @@ public class Trigger4 : MonoBehaviour
                 start_measuring_Off = true;
                 time_trigOff = Time.time;
             }else if((Time.time - time_trigOff) > 2f){
+                if(mIsTriggered)
+                    negative_activated = true;
                 mIsTriggered = false;
                 start_measuring_On = false;
                 finished_pos = false;
