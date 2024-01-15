@@ -261,20 +261,20 @@ public class gameController : MonoBehaviour
         if(!trigger1.GetComponent<Trigger1>().mIsTriggered || !trigger2.GetComponent<Trigger2>().mIsTriggered || !trigger3.GetComponent<Trigger3>().mIsTriggered || !trigger4.GetComponent<Trigger4>().mIsTriggered){
             smthIsOff = true;
         }else smthIsOff = false;
-        if(trigger1.GetComponent<Trigger1>().finished && trigger2.GetComponent<Trigger2>().finished && trigger3.GetComponent<Trigger3>().finished && trigger4.GetComponent<Trigger4>().finished){
+        if(trigger1.GetComponent<Trigger1>().finished_pos && trigger2.GetComponent<Trigger2>().finished_pos && trigger3.GetComponent<Trigger3>().finished_pos && trigger4.GetComponent<Trigger4>().finished_pos){
             allIsFinished = true;
         }else allIsFinished = false;
-        if(trigger1.GetComponent<Trigger1>().isShowing || trigger2.GetComponent<Trigger2>().isShowing || trigger3.GetComponent<Trigger3>().isShowing || trigger4.GetComponent<Trigger4>().isShowing){
+        if(trigger1.GetComponent<Trigger1>().isShowing_pos || trigger2.GetComponent<Trigger2>().isShowing_pos || trigger3.GetComponent<Trigger3>().isShowing_pos || trigger4.GetComponent<Trigger4>().isShowing_pos){
             smthIsShowing = true;
         }else smthIsShowing = false;
 
         switch(k){
             case 0:
-                if(trigger1.GetComponent<Trigger1>().mIsTriggered && !trigger2.GetComponent<Trigger2>().isShowing && !trigger3.GetComponent<Trigger3>().isShowing && !trigger4.GetComponent<Trigger4>().isShowing){
-                    if(!trigger1.GetComponent<Trigger1>().finished){
+                if(trigger1.GetComponent<Trigger1>().mIsTriggered && !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos){
+                    if(!trigger1.GetComponent<Trigger1>().finished_pos){
                         circles[k].SetActive(false);
-                        if(!trigger1.GetComponent<Trigger1>().isShowing)
-                            trigger1.GetComponent<Trigger1>().isShowing = true;
+                        if(!trigger1.GetComponent<Trigger1>().isShowing_pos)
+                            trigger1.GetComponent<Trigger1>().isShowing_pos = true;
                         k = increment(k);
                         Debug.Log(true);
                     }else if(!allIsTriggered){
@@ -285,11 +285,11 @@ public class gameController : MonoBehaviour
                 }
             break;
             case 1:
-                if(trigger2.GetComponent<Trigger2>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing && !trigger3.GetComponent<Trigger3>().isShowing && !trigger4.GetComponent<Trigger4>().isShowing){
-                    if(!trigger2.GetComponent<Trigger2>().finished){
+                if(trigger2.GetComponent<Trigger2>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos){
+                    if(!trigger2.GetComponent<Trigger2>().finished_pos){
                         circles[k].SetActive(false);
-                        if(!trigger2.GetComponent<Trigger2>().isShowing)
-                            trigger2.GetComponent<Trigger2>().isShowing = true;
+                        if(!trigger2.GetComponent<Trigger2>().isShowing_pos)
+                            trigger2.GetComponent<Trigger2>().isShowing_pos = true;
                         k = increment(k);
                     }else if(!allIsTriggered){
                         k = increment(k);
@@ -299,11 +299,11 @@ public class gameController : MonoBehaviour
                 }
             break;
             case 2:
-                if(trigger3.GetComponent<Trigger3>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing && !trigger2.GetComponent<Trigger2>().isShowing && !trigger4.GetComponent<Trigger4>().isShowing){
-                    if(!trigger3.GetComponent<Trigger3>().finished){
+                if(trigger3.GetComponent<Trigger3>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos){
+                    if(!trigger3.GetComponent<Trigger3>().finished_pos){
                         circles[k].SetActive(false);
-                        if(!trigger3.GetComponent<Trigger3>().isShowing)
-                            trigger3.GetComponent<Trigger3>().isShowing = true;
+                        if(!trigger3.GetComponent<Trigger3>().isShowing_pos)
+                            trigger3.GetComponent<Trigger3>().isShowing_pos = true;
                         k = increment(k);
                     }else if(!allIsTriggered){
                         k = increment(k);
@@ -313,11 +313,11 @@ public class gameController : MonoBehaviour
                 }
             break;
             case 3:
-                if(trigger4.GetComponent<Trigger4>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing && !trigger2.GetComponent<Trigger2>().isShowing && !trigger3.GetComponent<Trigger3>().isShowing){
-                    if(!trigger4.GetComponent<Trigger4>().finished){
+                if(trigger4.GetComponent<Trigger4>().mIsTriggered && !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos){
+                    if(!trigger4.GetComponent<Trigger4>().finished_pos){
                         circles[k].SetActive(false);
-                        if(!trigger4.GetComponent<Trigger4>().isShowing)
-                            trigger4.GetComponent<Trigger4>().isShowing = true;
+                        if(!trigger4.GetComponent<Trigger4>().isShowing_pos)
+                            trigger4.GetComponent<Trigger4>().isShowing_pos = true;
                         k = increment(k);
                     }else if(!allIsTriggered){
                         k = increment(k);

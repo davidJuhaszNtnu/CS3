@@ -23,7 +23,8 @@ public class Trigger4 : MonoBehaviour
     private int sum;
     public float average;
 
-    public bool isOff, start_measuring, isShowing, finished;
+    public bool isOff, start_measuring_pos, isShowing_pos, finished_pos;
+    public bool start_measuring_neg, isShowing_neg, finished_neg;
     private bool start_measuring_On, start_measuring_Off;
     private float time_trigOn, time_trigOff;
 
@@ -40,9 +41,13 @@ public class Trigger4 : MonoBehaviour
         time_neg = -99999f;
         time_elapsed_pos = true;
         time_elapsed_neg = true;
-        isShowing = false;
-        finished = false;
-        start_measuring = false;
+        isShowing_pos = false;
+        finished_pos = false;
+        start_measuring_pos = false;
+
+        isShowing_neg = false;
+        finished_neg = false;
+        start_measuring_neg = false;
 
         numberOfPoints = new int[n];
         for(int i = 0; i < n; i++){
@@ -58,22 +63,37 @@ public class Trigger4 : MonoBehaviour
         //home version
         OnTrigger4();
 
-        if(isShowing){
-            if(!start_measuring){
-                start_measuring = true;
+        if(isShowing_pos){
+            if(!start_measuring_pos){
+                start_measuring_pos = true;
                 time_pos = Time.time;
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
             }else if(Time.time - time_pos > 5f){
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
-                isShowing = false;
-                start_measuring = false;
-                finished = true;
+                isShowing_pos = false;
+                start_measuring_pos = false;
+                finished_pos = true;
             }
         }
 
-        if(!start_measuring){
+        if(isShowing_neg){
+            if(!start_measuring_neg){
+                start_measuring_neg = true;
+                time_neg = Time.time;
+                gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
+                // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+            }else if(Time.time - time_pos > 5f){
+                gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
+                // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                isShowing_neg = false;
+                start_measuring_neg = false;
+                finished_neg = true;
+            }
+        }
+
+        if(!start_measuring_pos){
             isOff = true;
         }else isOff = false;
     }
@@ -106,7 +126,7 @@ public class Trigger4 : MonoBehaviour
             }else if((Time.time - time_trigOff) > 2f){
                 mIsTriggered = false;
                 start_measuring_On = false;
-                finished = false;
+                finished_pos = false;
             }
 
             // mIsTriggered = false;
