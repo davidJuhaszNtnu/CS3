@@ -78,7 +78,7 @@ public class gameController : MonoBehaviour
     public TMP_InputField input_lake, input_wwtp, input_house, input_island;
     public GameObject[] triggerAreaShow;
 
-    public bool allIsTriggered, allIsNotTriggered, allIsFinished, smthIsShowing_pos, smthIsShowing_neg;
+    public bool allIsTriggered, allIsNotTriggered, allIsFinished_pos, allIsFinished_neg, smthIsShowing_pos, smthIsShowing_neg;
     //game assets
     public GameObject video_pos, video_neg;
     //happyEnd
@@ -167,7 +167,8 @@ public class gameController : MonoBehaviour
 
         //circle logic
         smthIsOff = false;
-        allIsFinished = false;
+        allIsFinished_pos = false;
+        allIsFinished_neg = false;
         smthIsShowing_pos = false;
         smthIsShowing_neg = false;
         k = 3;
@@ -264,8 +265,11 @@ public class gameController : MonoBehaviour
             smthIsOff = true;
         }else smthIsOff = false;
         if(trigger1.GetComponent<Trigger1>().finished_pos && trigger2.GetComponent<Trigger2>().finished_pos && trigger3.GetComponent<Trigger3>().finished_pos && trigger4.GetComponent<Trigger4>().finished_pos){
-            allIsFinished = true;
-        }else allIsFinished = false;
+            allIsFinished_pos = true;
+        }else allIsFinished_pos = false;
+        if(trigger1.GetComponent<Trigger1>().finished_neg && trigger2.GetComponent<Trigger2>().finished_neg && trigger3.GetComponent<Trigger3>().finished_neg && trigger4.GetComponent<Trigger4>().finished_neg){
+            allIsFinished_neg = true;
+        }else allIsFinished_neg = false;
         if(trigger1.GetComponent<Trigger1>().isShowing_pos || trigger2.GetComponent<Trigger2>().isShowing_pos || trigger3.GetComponent<Trigger3>().isShowing_pos || trigger4.GetComponent<Trigger4>().isShowing_pos){
             smthIsShowing_pos = true;
         }else smthIsShowing_pos = false;
@@ -273,19 +277,19 @@ public class gameController : MonoBehaviour
             smthIsShowing_neg = true;
         }else smthIsShowing_neg = false;
 
+        // Debug.Log(k);
         switch(k){
             case 0:
             bool_temp_pos = !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos;
                 if(!smthIsShowing_neg && trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_pos){
                     if(!trigger1.GetComponent<Trigger1>().finished_pos){
-                        circles[k].SetActive(false);
                         if(!trigger1.GetComponent<Trigger1>().isShowing_pos)
                             trigger1.GetComponent<Trigger1>().isShowing_pos = true;
+                    }
+                    else if(!allIsFinished_pos){
+                        circles[k].SetActive(false);
                         k = increment(k);
-                        Debug.Log(true);
-                    }else if(!allIsTriggered){
-                        k = increment(k);
-                        // Debug.Log(k);
+                        if(!trigger2.GetComponent<Trigger2>().mIsTriggered)
                         circles[k].SetActive(true);
                     }
                 }
@@ -294,13 +298,13 @@ public class gameController : MonoBehaviour
                 bool_temp_pos = !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos;
                 if(!smthIsShowing_neg && trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_pos){
                     if(!trigger2.GetComponent<Trigger2>().finished_pos){
-                        circles[k].SetActive(false);
                         if(!trigger2.GetComponent<Trigger2>().isShowing_pos)
                             trigger2.GetComponent<Trigger2>().isShowing_pos = true;
+                    }
+                    else if(!allIsFinished_pos){
+                        circles[k].SetActive(false);
                         k = increment(k);
-                    }else if(!allIsTriggered){
-                        k = increment(k);
-                        // Debug.Log(k);
+                        if(!trigger3.GetComponent<Trigger3>().mIsTriggered)
                         circles[k].SetActive(true);
                     }
                 }
@@ -309,14 +313,15 @@ public class gameController : MonoBehaviour
                 bool_temp_pos = !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger4.GetComponent<Trigger4>().isShowing_pos;
                 if(!smthIsShowing_neg && trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_pos){
                     if(!trigger3.GetComponent<Trigger3>().finished_pos){
-                        circles[k].SetActive(false);
+                        
                         if(!trigger3.GetComponent<Trigger3>().isShowing_pos)
                             trigger3.GetComponent<Trigger3>().isShowing_pos = true;
+                    }
+                    else if(!allIsFinished_pos){
+                        circles[k].SetActive(false);
                         k = increment(k);
-                    }else if(!allIsTriggered){
-                        k = increment(k);
-                        // Debug.Log(k);
-                        circles[k].SetActive(true);
+                        if(!trigger4.GetComponent<Trigger4>().mIsTriggered)
+                            circles[k].SetActive(true);
                     }
                 }
             break;
@@ -324,68 +329,88 @@ public class gameController : MonoBehaviour
                 bool_temp_pos = !trigger1.GetComponent<Trigger1>().isShowing_pos && !trigger2.GetComponent<Trigger2>().isShowing_pos && !trigger3.GetComponent<Trigger3>().isShowing_pos;
                 if(!smthIsShowing_neg && trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_pos){
                     if(!trigger4.GetComponent<Trigger4>().finished_pos){
-                        circles[k].SetActive(false);
-                        if(!trigger4.GetComponent<Trigger4>().isShowing_pos)
+                        
+                        if(!trigger4.GetComponent<Trigger4>().isShowing_pos){
                             trigger4.GetComponent<Trigger4>().isShowing_pos = true;
-                        k = increment(k);
-                    }else if(!allIsTriggered){
+                        }
+                    }
+                    else if(!allIsFinished_pos){
+                        circles[k].SetActive(false);
                         k = increment(k);
                         // Debug.Log(k);
+                        if(!trigger1.GetComponent<Trigger1>().mIsTriggered)
                         circles[k].SetActive(true);
                     }
                 }
             break;
         }
+        
+        // k_neg = increment(k_neg);
 
-        switch(k_neg){
-            case 0:
+        // switch(k_neg){
+        //     case 0:
                 bool_temp_neg = !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
                 if(!smthIsShowing_pos && trigger1.GetComponent<Trigger1>().negative_activated && !trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_neg){
                     if(!trigger1.GetComponent<Trigger1>().finished_neg){
                         if(!trigger1.GetComponent<Trigger1>().isShowing_neg)
                             trigger1.GetComponent<Trigger1>().isShowing_neg = true;
-                        k_neg = increment(k_neg);
+                        
                     }
+                    // else if(!allIsFinished_neg){
+                    //     k_neg = increment(k_neg);
+                    //     // Debug.Log(k);
+                    // }
                 }
-            break;
-            case 1:
+            // break;
+            // case 1:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
                 if(!smthIsShowing_pos && trigger2.GetComponent<Trigger2>().negative_activated && !trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_neg){
                     if(!trigger2.GetComponent<Trigger2>().finished_neg){
                         if(!trigger2.GetComponent<Trigger2>().isShowing_neg)
                             trigger2.GetComponent<Trigger2>().isShowing_neg = true;
-                        k_neg = increment(k_neg);
+                        // k_neg = increment(k_neg);
                     }
+                    // else if(!allIsFinished_neg){
+                    //     k_neg = increment(k_neg);
+                    //     // Debug.Log(k);
+                    // }
                 }
-            break;
-            case 2:
+            // break;
+            // case 2:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
                 if(!smthIsShowing_pos && trigger3.GetComponent<Trigger3>().negative_activated && !trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_neg){
                     if(!trigger3.GetComponent<Trigger3>().finished_neg){
                         if(!trigger3.GetComponent<Trigger3>().isShowing_neg)
                             trigger3.GetComponent<Trigger3>().isShowing_neg = true;
-                        k_neg = increment(k_neg);
+                        // k_neg = increment(k_neg);
                     }
+                    // else if(!allIsFinished_neg){
+                    //     k_neg = increment(k_neg);
+                    //     // Debug.Log(k);
+                    // }
                 }
-            break;
-            case 3:
+            // break;
+            // case 3:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg;
                 if(!smthIsShowing_pos && trigger4.GetComponent<Trigger4>().negative_activated && !trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_neg){
                     if(!trigger4.GetComponent<Trigger4>().finished_neg){
                         if(!trigger4.GetComponent<Trigger4>().isShowing_neg)
                             trigger4.GetComponent<Trigger4>().isShowing_neg = true;
-                        k_neg = increment(k_neg);
+                        // k_neg = increment(k_neg);
                     }
+                    // else if(!allIsFinished_neg){
+                    //     k_neg = increment(k_neg);
+                    //     // Debug.Log(k);
+                    // }
                 }
-            break;
-        }
-        
+        //     break;
+        // }
 
         if(allIsOff && !happyEndOn && !sadEndOn){
             //idle
             if(!startMeasuring_idle){
-                if(smthIsOff)
-                    circles[k].SetActive(true);
+                // if(smthIsOff)
+                    // circles[k].SetActive(true);
                 startMeasuring_idle = true;
                 time_idle = Time.time;
             }else if((Time.time - time_idle) < 5f){
@@ -472,12 +497,12 @@ public class gameController : MonoBehaviour
         }
 
         //happy end
-        if(allIsTriggered && allIsFinished){
+        if(allIsTriggered && allIsFinished_pos){
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
             }else if((Time.time - time_happyEnd) < 5f){
-                circles[k].SetActive(false);
+                // circles[k].SetActive(false);
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
                 video_pos.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();
@@ -522,7 +547,7 @@ public class gameController : MonoBehaviour
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
             }else if((Time.time - time_sadEnd) < 5f){
-                circles[k].SetActive(false);
+                // circles[k].SetActive(false);
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
                 video_neg.transform.GetChild(0).GetComponent<UnityEngine.Video.VideoPlayer>().Play();

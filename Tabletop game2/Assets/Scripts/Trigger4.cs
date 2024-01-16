@@ -62,7 +62,7 @@ public class Trigger4 : MonoBehaviour
 
     void Update(){
         //home version
-        OnTrigger4();
+        // OnTrigger4();
 
         if(isShowing_pos){
             if(!start_measuring_pos){
@@ -70,7 +70,7 @@ public class Trigger4 : MonoBehaviour
                 time_pos = Time.time;
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_pos > 5f){
+            }else if(Time.time - time_pos > 2f){
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_pos = false;
@@ -85,7 +85,7 @@ public class Trigger4 : MonoBehaviour
                 time_neg = Time.time;
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
                 // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_neg > 5f){
+            }else if(Time.time - time_neg > 2f){
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
                 // gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_neg = false;
@@ -160,23 +160,25 @@ public class Trigger4 : MonoBehaviour
         numberOfPoints[0] = count;
 
         if(average <= averageTarget + 10 && average >= averageTarget - 10){
-            if(!mIsTriggered){
-                time_pos = Time.time;
+            if(!start_measuring_On){
+                start_measuring_On = true;
+                time_trigOn = Time.time;
+            }else if((Time.time - time_trigOn) > 2f){
+                mIsTriggered = true;
+                start_measuring_Off = false;
+                finished_neg = false;
             }
-            if((Time.time - time_pos) < 20f)
-                time_elapsed_pos = false;
-            else time_elapsed_pos = true;
-
-            mIsTriggered = true;
         }else{
-            if(mIsTriggered){
-                time_neg = Time.time;
+            if(!start_measuring_Off){
+                start_measuring_Off = true;
+                time_trigOff = Time.time;
+            }else if((Time.time - time_trigOff) > 2f){
+                if(mIsTriggered)
+                    negative_activated = true;
+                mIsTriggered = false;
+                start_measuring_On = false;
+                finished_pos = false;
             }
-            if((Time.time - time_neg) < 20f)
-                time_elapsed_neg = false;
-            else time_elapsed_neg = true;
-
-            mIsTriggered = false;
         }
 
         // if(Input.GetKeyDown(KeyCode.Alpha4))
