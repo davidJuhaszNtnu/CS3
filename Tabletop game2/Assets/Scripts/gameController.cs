@@ -148,6 +148,10 @@ public class gameController : MonoBehaviour
         trig2_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
         trig3_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
         trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
+        trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig2_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+        trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
 
         fade_videos(0f, video_pos);
         fade_videos(0f, video_neg);

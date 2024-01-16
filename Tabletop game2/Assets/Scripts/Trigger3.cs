@@ -79,10 +79,10 @@ public class Trigger3 : MonoBehaviour
                 start_measuring_neg = true;
                 time_neg = Time.time;
                 gameController.trig3_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
-                // gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
+                gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
             }else if(Time.time - time_neg > 2f){
                 gameController.trig3_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
-                // gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
+                gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_neg = false;
                 start_measuring_neg = false;
                 finished_neg = true;

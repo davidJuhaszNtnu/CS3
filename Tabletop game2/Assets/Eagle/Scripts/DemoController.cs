@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement; // Add this line for SceneManager
+
 
 public class DemoController : MonoBehaviour
 {
