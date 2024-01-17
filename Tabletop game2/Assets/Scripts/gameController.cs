@@ -281,7 +281,7 @@ public class gameController : MonoBehaviour
             smthIsShowing_neg = true;
         }else smthIsShowing_neg = false;
 
-        Debug.Log(k);
+        // Debug.Log(k);
         circles[k].SetActive(true);
         switch(k){
             case 0:
