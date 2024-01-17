@@ -417,7 +417,7 @@ public class gameController : MonoBehaviour
                     // circles[k].SetActive(true);
                 startMeasuring_idle = true;
                 time_idle = Time.time;
-            }else if((Time.time - time_idle) < 5f){
+            }else if((Time.time - time_idle) < 10f){
                 time_idle_elapsed = false;
             }else{
                 time_idle_elapsed = true;
@@ -438,7 +438,7 @@ public class gameController : MonoBehaviour
                     if(!startMeasuring_title){
                         startMeasuring_title = true;
                         time_title = Time.time;
-                    }else if((Time.time - time_title) < 5f){
+                    }else if((Time.time - time_title) < 10f){
                         time_title_elapsed = false;
                     }else{
                         time_title_elapsed = true;
@@ -459,7 +459,7 @@ public class gameController : MonoBehaviour
                         if(!startMeasuring_text){
                             startMeasuring_text = true;
                             time_text = Time.time;
-                        }else if((Time.time - time_text) < 5f){
+                        }else if((Time.time - time_text) < 10f){
                             time_text_elapsed = false;
                         }else time_text_elapsed = true;
                     }
@@ -505,7 +505,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 5f){
+            }else if((Time.time - time_happyEnd) < 40f){
                 // circles[k].SetActive(false);
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
@@ -550,7 +550,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_sadEnd){
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
-            }else if((Time.time - time_sadEnd) < 5f){
+            }else if((Time.time - time_sadEnd) < 40f){
                 // circles[k].SetActive(false);
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
