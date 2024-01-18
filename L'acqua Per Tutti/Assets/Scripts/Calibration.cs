@@ -134,6 +134,12 @@ public class Calibration : MonoBehaviour
     public void ok_welcome2(){
         welcomePanel2.SetActive(false);
         calibrationPanel.SetActive(true);
+
+        // calibrationPanel.SetActive(false);
+        // firstPoint = new Vector3(0f, 0f, 0f);
+        // secondPoint = new Vector3(0f, 0f, 1f);
+        // gotBoth = true;
+        // calibrateFirst();
     }
 
     public void clickOnLink(){

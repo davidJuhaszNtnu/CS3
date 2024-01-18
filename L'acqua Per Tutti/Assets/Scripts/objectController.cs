@@ -48,6 +48,7 @@ public class objectController : MonoBehaviour
     Vector3[] corners;
 
     public LanguageChanger languageChanger;
+    public TMP_Dropdown dropdown;
     public Material rectangleMaterial;
 
 
@@ -274,7 +275,8 @@ public class objectController : MonoBehaviour
         }
         appPanel.GetComponent<ButtonsController>().layers_canvas[2].transform.GetChild(0).transform.localScale = Vector3.one * aspect_ratio*actualHeight;
 
-        languageChanger.changetoItalian();
+        if(dropdown.value == 0)
+            languageChanger.changetoItalian();
     }
 
     private void createDescriptionCanvas(string text, Vector3 position, float scale, float w, float h, float textSize, GameObject parent, int index){
