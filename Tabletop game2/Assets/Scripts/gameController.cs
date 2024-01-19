@@ -352,7 +352,7 @@ public class gameController : MonoBehaviour
         //     case 0:
         // Debug.Log(smthIsShowing_pos);
                 bool_temp_neg = !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && !trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && trigger1.GetComponent<Trigger1>().negative_activated && !trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_neg){
                     if(!trigger1.GetComponent<Trigger1>().finished_neg){
                         if(!trigger1.GetComponent<Trigger1>().isShowing_neg)
                             trigger1.GetComponent<Trigger1>().isShowing_neg = true;
@@ -366,7 +366,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 1:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && !trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && trigger2.GetComponent<Trigger2>().negative_activated && !trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_neg){
                     if(!trigger2.GetComponent<Trigger2>().finished_neg){
                         if(!trigger2.GetComponent<Trigger2>().isShowing_neg)
                             trigger2.GetComponent<Trigger2>().isShowing_neg = true;
@@ -380,7 +380,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 2:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && !trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && trigger3.GetComponent<Trigger3>().negative_activated && !trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_neg){
                     if(!trigger3.GetComponent<Trigger3>().finished_neg){
                         if(!trigger3.GetComponent<Trigger3>().isShowing_neg)
                             trigger3.GetComponent<Trigger3>().isShowing_neg = true;
@@ -394,7 +394,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 3:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg;
-                if(!smthIsShowing_pos && !trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && trigger4.GetComponent<Trigger4>().negative_activated && !trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_neg){
                     if(!trigger4.GetComponent<Trigger4>().finished_neg){
                         if(!trigger4.GetComponent<Trigger4>().isShowing_neg)
                             trigger4.GetComponent<Trigger4>().isShowing_neg = true;
