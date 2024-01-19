@@ -43,6 +43,7 @@ public class Trigger2 : MonoBehaviour
         time_elapsed_neg = true;
         isShowing_pos = false;
         finished_pos = false;
+        finished_neg = false;
         start_measuring_pos = false;
 
         numberOfPoints = new int[n];
@@ -115,6 +116,7 @@ public class Trigger2 : MonoBehaviour
                     negative_activated = true;
                 mIsTriggered = true;
                 start_measuring_Off = false;
+                finished_neg = false;
             }
 
             // mIsTriggered = true;
@@ -162,6 +164,7 @@ public class Trigger2 : MonoBehaviour
                     negative_activated = true;
                 mIsTriggered = true;
                 start_measuring_Off = false;
+                finished_neg = false;
             }
         }else{
             if(!start_measuring_Off){

@@ -43,6 +43,7 @@ public class Trigger4 : MonoBehaviour
         time_elapsed_neg = true;
         isShowing_pos = false;
         finished_pos = false;
+        finished_neg = false;
         start_measuring_pos = false;
 
         isShowing_neg = false;

@@ -71,7 +71,8 @@ public class gameController : MonoBehaviour
     private float time_text;
 
     public GameObject idleAction;
-    private float t_idleCloud, t_idleTitle, t_idleText;
+    public Material idleTitle_mat;
+    private float t_idleTitle, t_idleText;
 
     public GameObject debugPanel;
     private TextMeshProUGUI debugText_lake, debugText_wwtp, debugText_house, debugText_island;
@@ -94,7 +95,7 @@ public class gameController : MonoBehaviour
 
     //circles logic
     public bool smthIsOff, bool_temp_pos, bool_temp_neg;
-    private int k, k_neg;
+    private int k;
 
     void Start()
     {
@@ -132,7 +133,12 @@ public class gameController : MonoBehaviour
 
         //fade away the clouds
         //idle
-        fade_idle(0f,0f, 0f, true, true, true);
+        // idleTitle_mat = idleAction.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+        c = idleTitle_mat.color;
+        Debug.Log(c);
+        c.a = 0f;
+        idleTitle_mat.SetColor("_Color", c);
+        // fade_idle(0f,0f, 0f, true, true, true);
 
         //3d models
         // trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
@@ -157,7 +163,6 @@ public class gameController : MonoBehaviour
         fade_videos(0f, video_neg);
 
         time_idle = Time.time;
-        t_idleCloud = 0f;
         t_idleTitle = 0f;
         t_idleText = 0f;
         allIsOff = false;
@@ -176,7 +181,6 @@ public class gameController : MonoBehaviour
         smthIsShowing_pos = false;
         smthIsShowing_neg = false;
         k = 3;
-        k_neg = 3;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -354,8 +358,9 @@ public class gameController : MonoBehaviour
 
         // switch(k_neg){
         //     case 0:
+        // Debug.Log(smthIsShowing_pos);
                 bool_temp_neg = !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && trigger1.GetComponent<Trigger1>().negative_activated && !trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && !trigger1.GetComponent<Trigger1>().mIsTriggered && bool_temp_neg){
                     if(!trigger1.GetComponent<Trigger1>().finished_neg){
                         if(!trigger1.GetComponent<Trigger1>().isShowing_neg)
                             trigger1.GetComponent<Trigger1>().isShowing_neg = true;
@@ -369,7 +374,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 1:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && trigger2.GetComponent<Trigger2>().negative_activated && !trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && !trigger2.GetComponent<Trigger2>().mIsTriggered && bool_temp_neg){
                     if(!trigger2.GetComponent<Trigger2>().finished_neg){
                         if(!trigger2.GetComponent<Trigger2>().isShowing_neg)
                             trigger2.GetComponent<Trigger2>().isShowing_neg = true;
@@ -383,7 +388,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 2:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger4.GetComponent<Trigger4>().isShowing_neg;
-                if(!smthIsShowing_pos && trigger3.GetComponent<Trigger3>().negative_activated && !trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && !trigger3.GetComponent<Trigger3>().mIsTriggered && bool_temp_neg){
                     if(!trigger3.GetComponent<Trigger3>().finished_neg){
                         if(!trigger3.GetComponent<Trigger3>().isShowing_neg)
                             trigger3.GetComponent<Trigger3>().isShowing_neg = true;
@@ -397,7 +402,7 @@ public class gameController : MonoBehaviour
             // break;
             // case 3:
                 bool_temp_neg = !trigger1.GetComponent<Trigger1>().isShowing_neg && !trigger2.GetComponent<Trigger2>().isShowing_neg && !trigger3.GetComponent<Trigger3>().isShowing_neg;
-                if(!smthIsShowing_pos && trigger4.GetComponent<Trigger4>().negative_activated && !trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_neg){
+                if(!smthIsShowing_pos && !trigger4.GetComponent<Trigger4>().mIsTriggered && bool_temp_neg){
                     if(!trigger4.GetComponent<Trigger4>().finished_neg){
                         if(!trigger4.GetComponent<Trigger4>().isShowing_neg)
                             trigger4.GetComponent<Trigger4>().isShowing_neg = true;
@@ -424,16 +429,12 @@ public class gameController : MonoBehaviour
                 time_idle_elapsed = true;
             }
             if(time_idle_elapsed){
-                //fade in cloud
-                if(t_idleCloud < 1f){
-                    t_idleCloud += 0.01f;
-                    fade_idle(t_idleCloud, 0f, 0f, true, false, false);
-                }
                 //fade in title
-                if(t_idleTitle < 1f && !time_title_elapsed && !time_text_elapsed){
-                    t_idleTitle += 0.01f;
-                    fade_idle(0f, t_idleTitle, 0f, false, true, false);
-                }
+                // if(t_idleTitle < 1f && !time_title_elapsed && !time_text_elapsed){
+                //     t_idleTitle += 0.01f;
+                //     fade_idle(0f, t_idleTitle, 0f, false, true, false);
+                // }
+
                 
                 if(t_idleTitle >= 1f){
                     if(!startMeasuring_title){
@@ -449,12 +450,12 @@ public class gameController : MonoBehaviour
                     //fade out title
                     if(t_idleTitle > 0f){
                         t_idleTitle -= 0.01f;
-                        fade_idle(0f, t_idleTitle, 0f, false, true, false);
+                        // fade_idle(0f, t_idleTitle, 0f, false, true, false);
                     }
                     //fade in text
                     if(t_idleText < 1f && !time_text_elapsed){
                         t_idleText += 0.01f;
-                        fade_idle(0f, 0f, t_idleText, false, false, true);
+                        // fade_idle(0f, 0f, t_idleText, false, false, true);
                     }
                     if(t_idleText >= 1f){
                         if(!startMeasuring_text){
@@ -468,7 +469,7 @@ public class gameController : MonoBehaviour
                         //fade out text
                         if(t_idleText > 0f){
                             t_idleText -= 0.01f;
-                            fade_idle(0f, 0f, t_idleText, false, false, true);
+                            // fade_idle(0f, 0f, t_idleText, false, false, true);
                         }
                         if(t_idleText < 0f){
                             time_title_elapsed = false;
@@ -487,17 +488,13 @@ public class gameController : MonoBehaviour
             time_title_elapsed = false;
             time_text_elapsed = false;
             //fade out everything
-            if(t_idleCloud > 0f){
-                t_idleCloud -= 0.01f;
-                fade_idle(t_idleCloud, 0f, 0f, true, false, false);
-            }
             if(t_idleTitle > 0f){
                 t_idleTitle -= 0.01f;
-                fade_idle(0f, t_idleTitle, 0f, false, true, false);
+                // fade_idle(0f, t_idleTitle, 0f, false, true, false);
             }
             if(t_idleText > 0f){
                 t_idleText -= 0.01f;
-                fade_idle(0f, 0f, t_idleText, false, false, true);
+                // fade_idle(0f, 0f, t_idleText, false, false, true);
             }
         }
 

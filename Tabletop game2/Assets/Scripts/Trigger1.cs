@@ -47,6 +47,7 @@ public class Trigger1 : MonoBehaviour
         time_elapsed_neg = true;
         isShowing_pos = false;
         finished_pos = false;
+        finished_neg = false;
         start_measuring_pos = false;
         start_measuring_On = false;
         start_measuring_Off = false;
@@ -168,6 +169,7 @@ public class Trigger1 : MonoBehaviour
             }else if((Time.time - time_trigOn) > 2f){
                 mIsTriggered = true;
                 start_measuring_Off = false;
+                finished_neg = false;
             }
         }else{
             if(!start_measuring_Off){
