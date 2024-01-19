@@ -26,7 +26,18 @@ public class TriggerLanguage : MonoBehaviour
     public GameObject text_ita, text_eng;
     private float time_start;
 
-    public Texture idle_title;
+    //idle
+    public GameObject idle_cloud;
+    public Texture idle_title, idle_text;
+    public Texture idle_title_it, idle_text_it;
+
+    //other clouds
+    public GameObject lake_cloud_pos, wwtp_cloud_pos, house_cloud_pos, island_cloud_pos;
+    public GameObject lake_cloud_neg, wwtp_cloud_neg, house_cloud_neg, island_cloud_neg;
+    public Texture lake_tex_pos, wwtp_tex_pos, house_tex_pos, island_tex_pos;
+    public Texture lake_tex_neg, wwtp_tex_neg, house_tex_neg, island_tex_neg;
+    public Texture lake_tex_pos_it, wwtp_tex_pos_it, house_tex_pos_it, island_tex_pos_it;
+    public Texture lake_tex_neg_it, wwtp_tex_neg_it, house_tex_neg_it, island_tex_neg_it;
 
     private void Awake(){
         gameController.OnTrigger5Points += OnTrigger5Points;
@@ -44,6 +55,8 @@ public class TriggerLanguage : MonoBehaviour
         isItalian = true;
         text_eng.SetActive(false);
         text_ita.SetActive(true);
+
+        changeToItalian();
     }
 
     private void OnDestroy(){
@@ -109,10 +122,34 @@ public class TriggerLanguage : MonoBehaviour
     }
 
     private void changeToEnglish(){
-        
+        //idle
+        idle_cloud.transform.GetChild(0).GetComponent<Renderer>().material.SetTexture("_BaseMap", idle_title);
+        idle_cloud.transform.GetChild(1).GetComponent<Renderer>().material.SetTexture("_BaseMap", idle_text);
+        //other clouds
+        lake_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", lake_tex_pos);
+        wwtp_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", wwtp_tex_pos);
+        house_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", house_tex_pos);
+        island_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", island_tex_pos);
+
+        lake_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", lake_tex_neg);
+        wwtp_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", wwtp_tex_neg);
+        house_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", house_tex_neg);
+        island_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", island_tex_neg);
     }
 
     private void changeToItalian(){
-        
+        //idle
+        idle_cloud.transform.GetChild(0).GetComponent<Renderer>().material.SetTexture("_BaseMap", idle_title_it);
+        idle_cloud.transform.GetChild(1).GetComponent<Renderer>().material.SetTexture("_BaseMap", idle_text_it);
+        //other clouds
+        lake_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", lake_tex_pos_it);
+        wwtp_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", wwtp_tex_pos_it);
+        house_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", house_tex_pos_it);
+        island_cloud_pos.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", island_tex_pos_it);
+
+        lake_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", lake_tex_neg_it);
+        wwtp_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", wwtp_tex_neg_it);
+        house_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", house_tex_neg_it);
+        island_cloud_neg.transform.GetComponent<Renderer>().material.SetTexture("_BaseMap", island_tex_neg_it);
     }
 }

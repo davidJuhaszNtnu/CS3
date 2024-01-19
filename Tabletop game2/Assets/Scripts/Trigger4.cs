@@ -71,7 +71,7 @@ public class Trigger4 : MonoBehaviour
                 time_pos = Time.time;
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_pos > 2f){
+            }else if(Time.time - time_pos > 10f){
                 gameController.trig4_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig4_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_pos = false;
@@ -86,7 +86,7 @@ public class Trigger4 : MonoBehaviour
                 time_neg = Time.time;
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_neg > 2f){
+            }else if(Time.time - time_neg > 10f){
                 gameController.trig4_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig4_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_neg = false;

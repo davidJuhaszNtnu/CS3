@@ -71,7 +71,7 @@ public class gameController : MonoBehaviour
     private float time_text;
 
     public GameObject idleAction;
-    public Material idleTitle_mat;
+    private Material idleTitle_mat, idleText_mat;
     private float t_idleTitle, t_idleText;
 
     public GameObject debugPanel;
@@ -133,12 +133,9 @@ public class gameController : MonoBehaviour
 
         //fade away the clouds
         //idle
-        // idleTitle_mat = idleAction.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
-        c = idleTitle_mat.color;
-        Debug.Log(c);
-        c.a = 0f;
-        idleTitle_mat.SetColor("_Color", c);
-        // fade_idle(0f,0f, 0f, true, true, true);
+        idleTitle_mat = idleAction.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
+        idleText_mat = idleAction.transform.GetChild(0).GetChild(1).GetComponent<Renderer>().material;
+        fade_idle(0f, 0f, true, true);
 
         //3d models
         // trig1_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
@@ -206,21 +203,16 @@ public class gameController : MonoBehaviour
         videos.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RawImage>().color = c;
     }
 
-    private void fade_idle(float t_cloud, float t_title, float t_text, bool bool_cloud, bool bool_title, bool bool_text){
-        if(bool_cloud){
-            c = idleAction.transform.GetChild(0).GetComponent<Image>().color;
-            c.a = t_cloud;
-            idleAction.transform.GetChild(0).GetComponent<Image>().color = c;
-        }
+    private void fade_idle(float t_title, float t_text, bool bool_title, bool bool_text){
         if(bool_title){
-            c = idleAction.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color;
+            c = idleTitle_mat.color;
             c.a = t_title;
-            idleAction.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().color = c;
+            idleTitle_mat.SetColor("_BaseColor", c);
         }
         if(bool_text){
-            c = idleAction.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().color;
+            c = idleText_mat.color;
             c.a = t_text;
-            idleAction.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().color = c;
+            idleText_mat.SetColor("_BaseColor", c);
         }
     }
 
@@ -423,24 +415,24 @@ public class gameController : MonoBehaviour
                     // circles[k].SetActive(true);
                 startMeasuring_idle = true;
                 time_idle = Time.time;
-            }else if((Time.time - time_idle) < 5f){
+            }else if((Time.time - time_idle) < 10f){
                 time_idle_elapsed = false;
             }else{
                 time_idle_elapsed = true;
             }
             if(time_idle_elapsed){
                 //fade in title
-                // if(t_idleTitle < 1f && !time_title_elapsed && !time_text_elapsed){
-                //     t_idleTitle += 0.01f;
-                //     fade_idle(0f, t_idleTitle, 0f, false, true, false);
-                // }
+                if(t_idleTitle < 1f && !time_title_elapsed && !time_text_elapsed){
+                    t_idleTitle += 0.01f;
+                    fade_idle(t_idleTitle, 0f, true, false);
+                }
 
                 
                 if(t_idleTitle >= 1f){
                     if(!startMeasuring_title){
                         startMeasuring_title = true;
                         time_title = Time.time;
-                    }else if((Time.time - time_title) < 5f){
+                    }else if((Time.time - time_title) < 10f){
                         time_title_elapsed = false;
                     }else{
                         time_title_elapsed = true;
@@ -450,18 +442,18 @@ public class gameController : MonoBehaviour
                     //fade out title
                     if(t_idleTitle > 0f){
                         t_idleTitle -= 0.01f;
-                        // fade_idle(0f, t_idleTitle, 0f, false, true, false);
+                        fade_idle(t_idleTitle, 0f, true, false);
                     }
                     //fade in text
                     if(t_idleText < 1f && !time_text_elapsed){
                         t_idleText += 0.01f;
-                        // fade_idle(0f, 0f, t_idleText, false, false, true);
+                        fade_idle(0f, t_idleText, false, true);
                     }
                     if(t_idleText >= 1f){
                         if(!startMeasuring_text){
                             startMeasuring_text = true;
                             time_text = Time.time;
-                        }else if((Time.time - time_text) < 5f){
+                        }else if((Time.time - time_text) < 10f){
                             time_text_elapsed = false;
                         }else time_text_elapsed = true;
                     }
@@ -469,7 +461,7 @@ public class gameController : MonoBehaviour
                         //fade out text
                         if(t_idleText > 0f){
                             t_idleText -= 0.01f;
-                            // fade_idle(0f, 0f, t_idleText, false, false, true);
+                            fade_idle(0f, t_idleText, false, true);
                         }
                         if(t_idleText < 0f){
                             time_title_elapsed = false;
@@ -490,11 +482,11 @@ public class gameController : MonoBehaviour
             //fade out everything
             if(t_idleTitle > 0f){
                 t_idleTitle -= 0.01f;
-                // fade_idle(0f, t_idleTitle, 0f, false, true, false);
+                fade_idle(t_idleTitle, 0f, true, false);
             }
             if(t_idleText > 0f){
                 t_idleText -= 0.01f;
-                // fade_idle(0f, 0f, t_idleText, false, false, true);
+                fade_idle(0f, t_idleText, false, true);
             }
         }
 
@@ -503,7 +495,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 5f){
+            }else if((Time.time - time_happyEnd) < 10f){
                 // circles[k].SetActive(false);
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
@@ -548,7 +540,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_sadEnd){
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
-            }else if((Time.time - time_sadEnd) < 5f){
+            }else if((Time.time - time_sadEnd) < 10f){
                 // circles[k].SetActive(false);
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
