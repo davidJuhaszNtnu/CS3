@@ -66,7 +66,7 @@ public class Trigger3 : MonoBehaviour
                 time_pos = Time.time;
                 gameController.trig3_positiveAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_pos > 10f){
+            }else if(Time.time - time_pos > 15f){
                 gameController.trig3_positiveAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig3_positiveAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_pos = false;
@@ -81,7 +81,7 @@ public class Trigger3 : MonoBehaviour
                 time_neg = Time.time;
                 gameController.trig3_negativeAction.transform.GetChild(0).gameObject.SetActive(true);
                 gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(true);
-            }else if(Time.time - time_neg > 10f){
+            }else if(Time.time - time_neg > 15f){
                 gameController.trig3_negativeAction.transform.GetChild(0).gameObject.SetActive(false);
                 gameController.trig3_negativeAction.transform.GetChild(1).gameObject.SetActive(false);
                 isShowing_neg = false;

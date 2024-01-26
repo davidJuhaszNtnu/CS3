@@ -120,7 +120,7 @@ public class gameController : MonoBehaviour
         circles[3] = trigger4Action.transform.GetChild(2).gameObject;
         foreach(GameObject circle in circles)
             circle.SetActive(false);
-        circles[3].SetActive(true);
+        circles[0].SetActive(true);
 
         trig1_positiveAction.SetActive(true);
         trig2_positiveAction.SetActive(true);
@@ -177,7 +177,7 @@ public class gameController : MonoBehaviour
         allIsFinished_neg = false;
         smthIsShowing_pos = false;
         smthIsShowing_neg = false;
-        k = 3;
+        k = 0;
 
         debugPanel.SetActive(false);
         debugText_lake = debugPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -453,7 +453,7 @@ public class gameController : MonoBehaviour
                         if(!startMeasuring_text){
                             startMeasuring_text = true;
                             time_text = Time.time;
-                        }else if((Time.time - time_text) < 10f){
+                        }else if((Time.time - time_text) < 15f){
                             time_text_elapsed = false;
                         }else time_text_elapsed = true;
                     }
@@ -495,7 +495,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_happyEnd){
                 startMeasuring_happyEnd = true;
                 time_happyEnd = Time.time;
-            }else if((Time.time - time_happyEnd) < 10f){
+            }else if((Time.time - time_happyEnd) < 40f){
                 // circles[k].SetActive(false);
                 happyEndOn = true;
                 time_happyEnd_elapsed = false;
@@ -540,7 +540,7 @@ public class gameController : MonoBehaviour
             if(!startMeasuring_sadEnd){
                 startMeasuring_sadEnd = true;
                 time_sadEnd = Time.time;
-            }else if((Time.time - time_sadEnd) < 10f){
+            }else if((Time.time - time_sadEnd) < 40f){
                 // circles[k].SetActive(false);
                 sadEndOn = true;
                 time_sadEnd_elapsed = false;
