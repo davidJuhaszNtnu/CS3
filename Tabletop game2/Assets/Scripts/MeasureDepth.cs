@@ -36,7 +36,7 @@ public class MeasureDepth : MonoBehaviour
     [Range(-1f, 1f)]
     public float mRightCutoff = 1;
 
-    private Vector2Int mDepthResolution;
+    private readonly Vector2Int mDepthResolution = new Vector2Int(512, 424);
     private Rect mRect;
 
     private void Awake()
@@ -44,8 +44,7 @@ public class MeasureDepth : MonoBehaviour
         mSensor = KinectSensor.GetDefault();
         mMapper = mSensor.CoordinateMapper;
         mCamera = Camera.main;
-
-        mDepthResolution = new Vector2Int(512, 424);
+        
         int arraySize = mDepthResolution.x * mDepthResolution.y;
 
         mCameraSpacePoints = new CameraSpacePoint[arraySize];
